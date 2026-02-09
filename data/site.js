@@ -5,7 +5,11 @@ const normalizedDescription = rawDescription.replace(/\s+/g, " ").trim();
 const siteDescription =
   normalizedDescription.length > 160 ? `${normalizedDescription.slice(0, 157)}...` : normalizedDescription;
 
-const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const rawSiteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.URL ||
+  process.env.DEPLOY_PRIME_URL ||
+  "http://localhost:3000";
 const siteUrl = rawSiteUrl.endsWith("/") ? rawSiteUrl.slice(0, -1) : rawSiteUrl;
 
 export const siteConfig = {
