@@ -31,6 +31,8 @@ export const programmingLanguageNames = new Set([
 export const portfolioData = {
   fullName: "Asim Shafique",
   brandName: "Asim's Portfolio",
+  brandLogoSrc: "/images/site-logo.jpg",
+  brandLogoAlt: "Asim logo",
   role: "Software Engineer",
   heroSummary:
     "Passionate software engineer with 2+ years of experience building scalable backend solutions, AI-powered applications, and leading development. Focused on Python, Django - DRF, Generative AI | LLM, Agentic RAG's and cloud technologies.",

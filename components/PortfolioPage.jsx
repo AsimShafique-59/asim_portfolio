@@ -147,7 +147,21 @@ function validateContactForm(formData) {
 }
 
 export default function PortfolioPage() {
-  const { contact, experiences, projects, education, skills, stats, fullName, role, heroSummary, aboutParagraphs, brandName } = portfolioData;
+  const {
+    contact,
+    experiences,
+    projects,
+    education,
+    skills,
+    stats,
+    fullName,
+    role,
+    heroSummary,
+    aboutParagraphs,
+    brandName,
+    brandLogoSrc,
+    brandLogoAlt
+  } = portfolioData;
 
   const [activeSection, setActiveSection] = useState("#home");
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -394,7 +408,8 @@ export default function PortfolioPage() {
       <header className="site-header">
         <nav className="navbar navbar-expand-lg navbar-light container-xxl px-3 px-lg-4">
           <a className="navbar-brand brand-pill" href="#home" onClick={(event) => handleNavClick(event, "#home")}>
-            {brandName}
+            <Image className="brand-logo" src={brandLogoSrc} alt={brandLogoAlt || `${brandName} logo`} width={42} height={42} priority />
+            <span className="brand-text">{brandName}</span>
           </a>
 
           <button

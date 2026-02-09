@@ -25,7 +25,10 @@ const syne = Syne({
 export const metadata = {
   title: "Asim Shafique | Portfolio",
   description:
-    "Portfolio of Asim Shafique, software engineer with experience in Django, AI systems, and scalable backend development."
+    "Portfolio of Asim Shafique, software engineer with experience in Django, AI systems, and scalable backend development.",
+  icons: {
+    icon: "/images/site-logo.jpg"
+  }
 };
 
 export default function RootLayout({ children }) {
