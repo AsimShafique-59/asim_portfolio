@@ -449,10 +449,14 @@ export default function PortfolioPage() {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded"
           },
-          body: formBody
+          body: formBody,
+          redirect: "manual"
         });
 
-        if (!response.ok) {
+        const isRedirect =
+          response.status === 0 || response.status === 301 || response.status === 302 || response.status === 303;
+
+        if (!response.ok && !isRedirect) {
           throw new Error("Netlify form submit failed.");
         }
       } else {
