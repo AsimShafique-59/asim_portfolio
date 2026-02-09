@@ -444,7 +444,7 @@ export default function PortfolioPage() {
           message: formData.message
         }).toString();
 
-        const response = await fetch("/", {
+        const response = await fetch("/__forms.html", {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -965,6 +965,7 @@ export default function PortfolioPage() {
                 className="contact-form compact-form"
                 name="contact"
                 method="POST"
+                action="/__forms.html"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 noValidate
