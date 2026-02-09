@@ -1,45 +1,82 @@
 export const skillCategoryMeta = {
-  frontend: { title: "Frontend Technologies", icon: "bi bi-window" },
-  backend: { title: "Backend Technologies", icon: "bi bi-gear-fill" },
-  ai: { title: "AI and LLM Engineering", icon: "bi bi-cpu-fill" },
-  database: { title: "Databases", icon: "bi bi-database-fill" },
-  devops: { title: "Cloud and DevOps", icon: "bi bi-cloud-fill" },
-  tools: { title: "Development Tools", icon: "bi bi-tools" },
-  soft: { title: "Architecture and Soft Skills", icon: "bi bi-diagram-3-fill" }
+  backend: { title: "Python Backend", icon: "bi bi-gear-fill" },
+  ai: { title: "Generative AI & LLMs", icon: "bi bi-cpu-fill" },
+  database: { title: "Data & Vector Databases", icon: "bi bi-database-fill" },
+  devops: { title: "Cloud & MLOps", icon: "bi bi-cloud-fill" },
+  frontend: { title: "Supporting Frontend", icon: "bi bi-window" },
+  tools: { title: "Engineering Tooling", icon: "bi bi-tools" },
+  soft: { title: "Architecture & Leadership", icon: "bi bi-diagram-3-fill" }
 };
 
 export const skillCategoryOrder = [
-  "frontend",
   "backend",
   "ai",
   "database",
   "devops",
+  "frontend",
   "tools",
   "soft"
 ];
 
-export const programmingLanguageNames = new Set([
-  "python",
-  "javascript",
-  "typescript",
-  "sql",
-  "java",
-  "c++",
-  "php"
-]);
+export const programmingLanguageNames = new Set([]);
 
 export const portfolioData = {
   fullName: "Asim Shafique",
   brandName: "Asim's Portfolio",
-  brandLogoSrc: "/images/site-logo.jpg",
+  brandLogoSrc: "/images/site-logo.svg",
   brandLogoAlt: "Asim logo",
-  role: "Software Engineer",
+  role: "Python, DRF & Generative AI Engineer",
   heroSummary:
-    "Passionate software engineer with 2+ years of experience building scalable backend solutions, AI-powered applications, and leading development. Focused on Python, Django - DRF, Generative AI | LLM, Agentic RAG's and cloud technologies.",
+    "Python and AI engineer with 2+ years of experience building scalable backend systems, LLM-powered applications, and production-grade automations. Focused on Django/DRF, FastAPI, agentic RAG, and cloud deployment.",
+  heroBadges: ["Python", "Django/DRF", "FastAPI", "Generative AI", "RAG Systems", "LLM Automation"],
+  focusTagline: "Python • DRF • Generative AI • Automation",
   aboutParagraphs: [
-    "I'm a passionate software engineer with a strong background in backend development, AI integration, and product-focused engineering. I specialize in building scalable Python applications, API services, and modern AI-powered workflows.",
+    "I'm a Python and AI engineer with a strong background in backend development, LLM integration, and product-focused engineering. I specialize in scalable Python services, API design, and intelligent AI workflows.",
     "My journey in software engineering has taken me through multiple real-world domains. I enjoy solving complex problems, improving performance, and building reliable systems that create measurable business value.",
-    "With expertise in Python, Django, DRF, FastAPI, and cloud tooling, I'm always eager to take on new challenges and contribute to impactful products."
+    "With expertise in Python, Django/DRF, FastAPI, LangChain, and cloud tooling, I'm always eager to take on new challenges and contribute to impactful products."
+  ],
+  services: [
+    {
+      title: "Python Backend Engineering",
+      description:
+        "Designing scalable APIs and backend systems with Python, Django/DRF, and FastAPI. Postgres/MongoDB data modeling, JWT auth, Dockerized deployments, and CI/CD-ready services.",
+      icon: "bi bi-braces"
+    },
+    {
+      title: "Generative AI & LLM Systems",
+      description:
+        "Building LLM-powered applications with LangChain, LangGraph, and OpenAI SDK. RAG pipelines with Chroma/Pinecone/Faiss, prompt evaluation, and production monitoring.",
+      icon: "bi bi-cpu-fill"
+    },
+    {
+      title: "AI Automation & Integrations",
+      description:
+        "Automating business workflows with Python and AI agents, integrating APIs, vector databases, and cloud services for reliable, repeatable operations.",
+      icon: "bi bi-diagram-3-fill"
+    },
+    {
+      title: "SaaS Product Engineering",
+      description:
+        "Building SaaS platforms with secure auth, multi-tenant-ready architecture, and scalable APIs using Django/DRF or FastAPI.",
+      icon: "bi bi-layers"
+    }
+  ],
+  faq: [
+    {
+      question: "What Python and AI services do you offer?",
+      answer:
+        "I deliver Python backend development, Django/DRF and FastAPI APIs, LLM app development, RAG systems, and AI automation for business workflows."
+    },
+    {
+      question: "Do you build production-ready AI systems?",
+      answer:
+        "Yes. I focus on production reliability, monitoring, and security while deploying LLM pipelines, vector search, and AI agents."
+    },
+    {
+      question: "Can you integrate AI with existing backend systems?",
+      answer:
+        "Absolutely. I integrate AI features into existing Python/Django stacks, REST APIs, and data pipelines without disrupting core systems."
+    }
   ],
   stats: [
     { label: "Years Experience", target: 2 },
@@ -126,48 +163,52 @@ export const portfolioData = {
     }
   ],
   skills: [
-    { id: 1, name: "HTML", category: "frontend", level: "advanced", order: 1 },
-    { id: 2, name: "CSS", category: "frontend", level: "advanced", order: 2 },
-    { id: 3, name: "JavaScript", category: "frontend", level: "advanced", order: 3 },
-    { id: 4, name: "React.js", category: "frontend", level: "advanced", order: 4 },
-    { id: 5, name: "TypeScript", category: "backend", level: "advanced", order: 5 },
-    { id: 6, name: "Node.js", category: "backend", level: "advanced", order: 6 },
-    { id: 7, name: "Python", category: "backend", level: "expert", order: 7 },
-    { id: 8, name: "Django", category: "backend", level: "expert", order: 8 },
-    { id: 9, name: "DRF", category: "backend", level: "expert", order: 9 },
-    { id: 10, name: "FastAPI", category: "backend", level: "advanced", order: 10 },
+    { id: 7, name: "Python", category: "backend", level: "expert", order: 1 },
+    { id: 8, name: "Django", category: "backend", level: "expert", order: 2 },
+    { id: 9, name: "Django REST Framework", category: "backend", level: "expert", order: 3 },
+    { id: 10, name: "FastAPI", category: "backend", level: "advanced", order: 4 },
     { id: 11, name: "LangChain", category: "ai", level: "expert", order: 5 },
     { id: 12, name: "LangGraph", category: "ai", level: "advanced", order: 6 },
     { id: 13, name: "CrewAI", category: "ai", level: "advanced", order: 7 },
     { id: 14, name: "OpenAI Agent SDK", category: "ai", level: "advanced", order: 8 },
     { id: 15, name: "RAG Systems", category: "ai", level: "advanced", order: 9 },
-    { id: 16, name: "MySQL", category: "database", level: "advanced", order: 10 },
-    { id: 17, name: "PostgreSQL", category: "database", level: "advanced", order: 11 },
-    { id: 18, name: "Chroma DB", category: "database", level: "advanced", order: 12 },
-    { id: 19, name: "Pinecone DB", category: "database", level: "advanced", order: 13 },
-    { id: 20, name: "Faiss DB", category: "database", level: "advanced", order: 14 },
-    { id: 21, name: "MongoDB", category: "database", level: "advanced", order: 15 },
-    { id: 22, name: "Docker", category: "devops", level: "advanced", order: 12 },
-    { id: 23, name: "AWS", category: "devops", level: "advanced", order: 13 },
-    { id: 24, name: "GitHub Actions", category: "tools", level: "advanced", order: 14 },
-    { id: 25, name: "PyCharm", category: "tools", level: "advanced", order: 15 },
-    { id: 26, name: "VS Code", category: "tools", level: "advanced", order: 16 },
-    { id: 27, name: "Cursor", category: "tools", level: "advanced", order: 17 },
-    { id: 28, name: "pgAdmin", category: "tools", level: "advanced", order: 18 },
-    { id: 29, name: "Postman", category: "tools", level: "advanced", order: 19 },
-    { id: 30, name: "XAMPP", category: "tools", level: "advanced", order: 20 },
-    { id: 31, name: "DBeaver", category: "tools", level: "advanced", order: 21 },
-    { id: 32, name: "System Design", category: "soft", level: "advanced", order: 16 }
+    { id: 17, name: "PostgreSQL", category: "database", level: "advanced", order: 10 },
+    { id: 21, name: "MongoDB", category: "database", level: "advanced", order: 11 },
+    { id: 16, name: "MySQL", category: "database", level: "advanced", order: 12 },
+    { id: 18, name: "Chroma DB", category: "database", level: "advanced", order: 13 },
+    { id: 19, name: "Pinecone DB", category: "database", level: "advanced", order: 14 },
+    { id: 20, name: "Faiss DB", category: "database", level: "advanced", order: 15 },
+    { id: 22, name: "Docker", category: "devops", level: "advanced", order: 16 },
+    { id: 23, name: "AWS", category: "devops", level: "advanced", order: 17 },
+    { id: 33, name: "Render", category: "devops", level: "advanced", order: 18 },
+    { id: 34, name: "Vercel", category: "devops", level: "advanced", order: 19 },
+    { id: 35, name: "Hostinger", category: "devops", level: "advanced", order: 20 },
+    { id: 6, name: "Node.js", category: "backend", level: "advanced", order: 18 },
+    { id: 24, name: "GitHub Actions", category: "tools", level: "advanced", order: 24 },
+    { id: 29, name: "Postman", category: "tools", level: "advanced", order: 25 },
+    { id: 26, name: "VS Code", category: "tools", level: "advanced", order: 26 },
+    { id: 25, name: "PyCharm", category: "tools", level: "advanced", order: 27 },
+    { id: 27, name: "Cursor", category: "tools", level: "advanced", order: 28 },
+    { id: 28, name: "pgAdmin", category: "tools", level: "advanced", order: 29 },
+    { id: 31, name: "DBeaver", category: "tools", level: "advanced", order: 30 },
+    { id: 30, name: "XAMPP", category: "tools", level: "advanced", order: 31 },
+    { id: 32, name: "System Design", category: "soft", level: "advanced", order: 32 },
+    { id: 36, name: "Microservices Architecture", category: "soft", level: "advanced", order: 33 },
+    { id: 37, name: "Clean Architecture", category: "soft", level: "advanced", order: 34 },
+    { id: 38, name: "SOLID Principles", category: "soft", level: "advanced", order: 35 },
+    { id: 39, name: "Domain-Driven Design (DDD)", category: "soft", level: "advanced", order: 36 },
+    { id: 40, name: "Event-Driven Systems", category: "soft", level: "advanced", order: 37 },
+    { id: 41, name: "Scalable API Design", category: "soft", level: "advanced", order: 38 }
   ],
   projects: [
     {
       id: 1,
       title: "Power Email AI",
       shortDescription:
-        "Full-stack AI email automation system with smart replies, routing, and campaigns.",
+        "Generative AI email automation system with smart replies, routing, and campaigns.",
       description:
-        "Engineered an AI email platform with workflow automation, JWT authentication, encrypted credential storage, and AWS SES email pipelines. Built a React interface for automation control and template management.",
-      techStack: ["Python", "OpenAI", "AWS SES", "React", "JWT", "Automation"],
+        "Engineered a Python-powered AI email platform with workflow automation, JWT authentication, encrypted credential storage, and AWS SES email pipelines. Built a React interface for automation control and template management.",
+      techStack: ["Python", "OpenAI", "AWS SES", "JWT", "Automation"],
       liveUrl: "https://excels-technology.com/files",
       githubUrl: "",
       startDate: "2025-01-01",
@@ -179,7 +220,7 @@ export const portfolioData = {
       id: 2,
       title: "Peer Learning Circle Web Application",
       shortDescription:
-        "Scalable student collaboration platform for managing study groups.",
+        "Python/Django collaboration platform for managing study groups.",
       description:
         "Built a Django web application to help students create and manage peer learning groups with improved admin controls and collaboration flows.",
       techStack: ["Python", "Django", "DRF", "REST APIs"],
@@ -194,7 +235,7 @@ export const portfolioData = {
       id: 3,
       title: "Sophia Bot - AI Healthcare Assistant",
       shortDescription:
-        "Healthcare chatbot with context-aware responses and conversation memory.",
+        "Generative AI healthcare chatbot with context-aware responses and memory.",
       description:
         "Developed a healthcare assistant powered by OpenAI Agent SDK and Groq Llama-3 with RAG architecture. Designed for future EHR integration with measured answer accuracy around 92%.",
       techStack: ["OpenAI Agent SDK", "Groq Llama-3", "RAG", "Python"],
@@ -209,7 +250,7 @@ export const portfolioData = {
       id: 4,
       title: "Multi-Modal RAG with Contextual References",
       shortDescription:
-        "Multi-modal retrieval system for documents, images, and multimedia references.",
+        "Multi-modal RAG system for documents, images, and multimedia references.",
       description:
         "Designed a RAG pipeline that processes PDF, DOCX, CSV, and image sources using LangChain and ChromaDB. Added audio and video timestamp extraction for richer context retrieval.",
       techStack: ["LangChain", "ChromaDB", "Groq Llama-3", "Python", "RAG"],

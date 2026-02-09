@@ -13,10 +13,12 @@ import {
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Education", href: "#education" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" }
 ];
 
@@ -157,7 +159,11 @@ export default function PortfolioPage() {
     fullName,
     role,
     heroSummary,
+    heroBadges: heroBadgeValues,
+    focusTagline,
     aboutParagraphs,
+    services,
+    faq,
     brandName,
     brandLogoSrc,
     brandLogoAlt
@@ -165,6 +171,7 @@ export default function PortfolioPage() {
 
   const [activeSection, setActiveSection] = useState("#home");
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [theme, setTheme] = useState("light");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -175,8 +182,63 @@ export default function PortfolioPage() {
   const [formStatus, setFormStatus] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  useEffect(() => {
+    const layers = Array.from(document.querySelectorAll("[data-parallax]"));
+    if (!layers.length) return undefined;
+
+    let rafId = null;
+    const update = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      layers.forEach((layer) => {
+        const speed = Number(layer.dataset.parallax || 0);
+        const offset = scrollY * speed;
+        layer.style.transform = `translate3d(0, ${offset}px, 0)`;
+      });
+      rafId = null;
+    };
+
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, []);
+
   const featuredProjects = useMemo(() => projects.filter((project) => project.isFeatured), [projects]);
   const skillGroups = useMemo(() => buildSkillGroups(skills), [skills]);
+  const heroBadges = useMemo(
+    () => (heroBadgeValues?.length ? heroBadgeValues : skills.slice(0, 6).map((skill) => skill.name)),
+    [heroBadgeValues, skills]
+  );
+  const statsWithCounts = useMemo(() => {
+    const techCount = skills.length;
+    return stats.map((stat) =>
+      stat.label.toLowerCase().includes("technologies")
+        ? { ...stat, target: techCount }
+        : stat
+    );
+  }, [skills, stats]);
+  const currentExperience = useMemo(
+    () => experiences.find((experience) => experience.isCurrent) || experiences[0],
+    [experiences]
+  );
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem("theme");
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
+    setTheme(initialTheme);
+    document.documentElement.dataset.theme = initialTheme;
+  }, []);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -198,7 +260,7 @@ export default function PortfolioPage() {
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.2, rootMargin: "0px 0px -6% 0px" }
     );
 
     revealEls.forEach((element) => revealObserver.observe(element));
@@ -255,7 +317,7 @@ export default function PortfolioPage() {
 
     const animateCounter = (counterElement) => {
       const target = Number(counterElement.dataset.target || 0);
-      const duration = 1200;
+      const duration = 900;
       let startTime = null;
 
       const step = (timestamp) => {
@@ -285,7 +347,7 @@ export default function PortfolioPage() {
       hasAnimatedCounters = true;
 
       counters.forEach((counterElement, index) => {
-        window.setTimeout(() => animateCounter(counterElement), index * 140);
+        window.setTimeout(() => animateCounter(counterElement), index * 120);
       });
     };
 
@@ -339,6 +401,13 @@ export default function PortfolioPage() {
     setIsNavOpen(false);
   };
 
+  const handleThemeToggle = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
+    window.localStorage.setItem("theme", nextTheme);
+  };
+
   const handleFormInput = (event) => {
     const { name, value } = event.target;
     setFormData((previous) => ({ ...previous, [name]: value }));
@@ -362,35 +431,63 @@ export default function PortfolioPage() {
     setFormStatus(null);
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
+      let successMessage = "Thanks! Your message was sent successfully.";
+      const isLocalhost =
+        typeof window !== "undefined" && ["localhost", "127.0.0.1"].includes(window.location.hostname);
 
-      const payload = await response.json();
+      if (!isLocalhost) {
+        const formBody = new URLSearchParams({
+          "form-name": "contact",
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        }).toString();
 
-      if (!response.ok) {
-        setFormErrors(payload.errors || {});
-        setFormStatus({
-          type: "danger",
-          message: payload.message || "Please fix the errors in the contact form and try again."
+        const response = await fetch("/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: formBody
         });
-        return;
+
+        if (!response.ok) {
+          throw new Error("Netlify form submit failed.");
+        }
+      } else {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const payload = await response.json();
+
+        if (!response.ok) {
+          setFormErrors(payload.errors || {});
+          setFormStatus({
+            type: "danger",
+            message: payload.message || "Please fix the errors in the contact form and try again."
+          });
+          return;
+        }
+
+        successMessage = payload.message || successMessage;
       }
 
       setFormStatus({
         type: "success",
-        message: payload.message || "Thanks! Your message was sent successfully."
+        message: successMessage
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
       setFormErrors({});
     } catch {
       setFormStatus({
         type: "warning",
-        message: "Your message was saved locally, but network delivery is not configured yet."
+        message: "Your message could not be delivered. Please try again or email me directly."
       });
     } finally {
       setIsSubmitting(false);
@@ -402,13 +499,22 @@ export default function PortfolioPage() {
   return (
     <>
       <div className="scroll-progress" id="scrollProgress" aria-hidden="true" />
-      <div className="bg-glow bg-glow-cyan" />
-      <div className="bg-glow bg-glow-orange" />
+      <div className="bg-glow bg-glow-cyan" data-parallax="0.12" />
+      <div className="bg-glow bg-glow-orange" data-parallax="0.2" />
+      <div className="bg-glow bg-glow-lime" data-parallax="0.08" />
 
       <header className="site-header">
         <nav className="navbar navbar-expand-lg navbar-light container-xxl px-3 px-lg-4">
           <a className="navbar-brand brand-pill" href="#home" onClick={(event) => handleNavClick(event, "#home")}>
-            <Image className="brand-logo" src={brandLogoSrc} alt={brandLogoAlt || `${brandName} logo`} width={42} height={42} priority />
+            <Image
+              className="brand-logo"
+              src={brandLogoSrc}
+              alt={brandLogoAlt || `${brandName} logo`}
+              width={42}
+              height={42}
+              priority
+              unoptimized
+            />
             <span className="brand-text">{brandName}</span>
           </a>
 
@@ -437,6 +543,17 @@ export default function PortfolioPage() {
                   </a>
                 </li>
               ))}
+              <li className="nav-item nav-actions">
+                <button
+                  className="theme-toggle"
+                  type="button"
+                  onClick={handleThemeToggle}
+                  aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                  aria-pressed={theme === "dark"}
+                >
+                  <i className={`bi ${theme === "dark" ? "bi-sun-fill" : "bi-moon-stars-fill"}`} />
+                </button>
+              </li>
             </ul>
           </div>
         </nav>
@@ -445,44 +562,87 @@ export default function PortfolioPage() {
       <main className="container-xxl px-3 px-lg-4 py-main">
         <section id="home" className="section hero-section">
           <div className="hero-shell reveal" data-anim="up">
-            <span className="hero-bg-dot hero-bg-dot-1" aria-hidden="true" />
-            <span className="hero-bg-dot hero-bg-dot-2" aria-hidden="true" />
-            <span className="hero-bg-dot hero-bg-dot-3" aria-hidden="true" />
+            <span className="hero-spark hero-spark-1" aria-hidden="true" />
+            <span className="hero-spark hero-spark-2" aria-hidden="true" />
+            <span className="hero-spark hero-spark-3" aria-hidden="true" />
 
-            <Image
-              className="hero-avatar"
-              src="/images/profile-image.jpg"
-              alt={`Portrait of ${fullName}`}
-              width={220}
-              height={220}
-              priority
-            />
-            <h1 className="hero-title">{fullName}</h1>
-            <p className="hero-subtitle">{role}</p>
-            <p className="hero-description">{heroSummary}</p>
+            <div className="hero-grid">
+              <div className="hero-copy">
+                <p className="hero-kicker">Python • DRF • Generative AI Systems</p>
+                <h1 className="hero-title">{fullName}</h1>
+                <p className="hero-subtitle">{role}</p>
+                <p className="hero-description">{heroSummary}</p>
 
-            <div className="hero-actions">
-              <a href="#contact" className="btn hero-btn btn-main" onClick={(event) => handleNavClick(event, "#contact")}>
-                <i className="bi bi-envelope-fill me-2" />Get In Touch
-              </a>
-              <a href="#projects" className="btn hero-btn btn-outline-main" onClick={(event) => handleNavClick(event, "#projects")}>
-                <i className="bi bi-code-slash me-2" />View Projects
-              </a>
-            </div>
+                <div className="hero-badges">
+                  {heroBadges.map((badge) => (
+                    <span className="hero-badge" key={badge}>
+                      {badge}
+                    </span>
+                  ))}
+                </div>
 
-            <div className="hero-social">
-              <a href={`mailto:${contact.email}`} aria-label="Email">
-                <i className="bi bi-envelope-fill" />
-              </a>
-              <a href={contact.linkedInUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <i className="bi bi-linkedin" />
-              </a>
-              <a href={contact.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <i className="bi bi-github" />
-              </a>
-              <a href="tel:+923254155556" aria-label="Phone">
-                <i className="bi bi-telephone-fill" />
-              </a>
+                <div className="hero-actions">
+                  <a href="#contact" className="btn hero-btn btn-main" onClick={(event) => handleNavClick(event, "#contact")}>
+                    <i className="bi bi-envelope-fill me-2" />Get In Touch
+                  </a>
+                  <a href="#projects" className="btn hero-btn btn-outline-main" onClick={(event) => handleNavClick(event, "#projects")}>
+                    <i className="bi bi-code-slash me-2" />View Projects
+                  </a>
+                </div>
+
+                <div className="hero-social">
+                  <a href={`mailto:${contact.email}`} aria-label="Email">
+                    <i className="bi bi-envelope-fill" />
+                  </a>
+                  <a href={contact.linkedInUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i className="bi bi-linkedin" />
+                  </a>
+                  <a href={contact.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i className="bi bi-github" />
+                  </a>
+                  <a href="tel:+923254155556" aria-label="Phone">
+                    <i className="bi bi-telephone-fill" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="hero-visual">
+                <div className="hero-portrait">
+                  <span className="hero-ring" aria-hidden="true" />
+                  <Image
+                    className="hero-avatar"
+                    src="/images/profile-image.jpg"
+                    alt={`Portrait of ${fullName}`}
+                    width={240}
+                    height={240}
+                    priority
+                  />
+                </div>
+
+                <div className="hero-mini-cards">
+                  <article className="hero-mini-card">
+                    <i className="bi bi-geo-alt-fill" aria-hidden="true" />
+                    <div>
+                      <p className="hero-mini-label">Based in</p>
+                      <p className="hero-mini-value">{contact.location}</p>
+                    </div>
+                  </article>
+                  <article className="hero-mini-card">
+                    <i className="bi bi-briefcase-fill" aria-hidden="true" />
+                    <div>
+                      <p className="hero-mini-label">Current role</p>
+                      <p className="hero-mini-value">{currentExperience?.title || "Open to new roles"}</p>
+                    </div>
+                  </article>
+                  <article className="hero-mini-card">
+                    <i className="bi bi-stars" aria-hidden="true" />
+                    <div>
+                      <p className="hero-mini-label">Focus</p>
+                      <p className="hero-mini-value">{focusTagline || "Python • DRF • LLMs • Automation"}</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -494,7 +654,7 @@ export default function PortfolioPage() {
 
           <div className="about-layout">
             <div className="about-stats">
-              {stats.map((stat, index) => (
+              {statsWithCounts.map((stat, index) => (
                 <article
                   className="about-stat-card reveal"
                   data-anim="left"
@@ -503,7 +663,7 @@ export default function PortfolioPage() {
                 >
                   <p className="about-stat-value">
                     <span className="counter" data-target={stat.target}>
-                      0
+                      {stat.target}
                     </span>
                     +
                   </p>
@@ -517,6 +677,27 @@ export default function PortfolioPage() {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="services" className="section glass-card reveal" data-anim="up">
+          <div className="section-head">
+            <p className="section-kicker">Services</p>
+            <h2>Python + AI Expertise</h2>
+          </div>
+
+          <div className="row g-3">
+            {services.map((service, index) => (
+              <div className="col-12 col-md-6 col-xl-4" key={service.title}>
+                <article className="service-card reveal" data-anim="zoom" data-delay={String(index * 60)}>
+                  <div className="service-card-head">
+                    <i className={service.icon} aria-hidden="true" />
+                    <h3 className="h5 mb-0">{service.title}</h3>
+                  </div>
+                  <p className="mb-0">{service.description}</p>
+                </article>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -623,7 +804,7 @@ export default function PortfolioPage() {
         <section id="skills" className="section glass-card reveal" data-anim="up">
           <div className="section-head">
             <p className="section-kicker">Skills</p>
-            <h2>Core Technologies</h2>
+            <h2>Python & AI Stack</h2>
           </div>
 
           <div className="row g-3 skills-grid">
@@ -685,6 +866,22 @@ export default function PortfolioPage() {
                   {item.description ? <p className="mb-0">{item.description}</p> : null}
                 </article>
               </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="faq" className="section glass-card reveal" data-anim="up">
+          <div className="section-head">
+            <p className="section-kicker">FAQ</p>
+            <h2>Working Together</h2>
+          </div>
+
+          <div className="faq-grid">
+            {faq.map((item, index) => (
+              <article className="faq-card reveal" data-anim="up" data-delay={String(index * 60)} key={item.question}>
+                <h3 className="h6 mb-2">{item.question}</h3>
+                <p className="mb-0">{item.answer}</p>
+              </article>
             ))}
           </div>
         </section>
@@ -764,7 +961,17 @@ export default function PortfolioPage() {
                 </div>
               ) : null}
 
-              <form className="contact-form compact-form" noValidate onSubmit={handleContactSubmit}>
+              <form
+                className="contact-form compact-form"
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                noValidate
+                onSubmit={handleContactSubmit}
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" value="" />
                 <div className="row g-3">
                   <div className="col-12">
                     <label className="form-label" htmlFor="name">

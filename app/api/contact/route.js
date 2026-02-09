@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 
 const submissionsFilePath = path.join(process.cwd(), "data", "contact-submissions.json");
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const isServerlessEnv = process.env.NETLIFY === "true";
 
 function validatePayload(payload) {
   const errors = {};
@@ -72,11 +73,13 @@ export async function POST(request) {
       createdAt: new Date().toISOString()
     };
 
-    const currentEntries = await readExistingSubmissions();
-    currentEntries.unshift(entry);
+    if (!isServerlessEnv) {
+      const currentEntries = await readExistingSubmissions();
+      currentEntries.unshift(entry);
 
-    await fs.mkdir(path.dirname(submissionsFilePath), { recursive: true });
-    await fs.writeFile(submissionsFilePath, `${JSON.stringify(currentEntries, null, 2)}\n`, "utf8");
+      await fs.mkdir(path.dirname(submissionsFilePath), { recursive: true });
+      await fs.writeFile(submissionsFilePath, `${JSON.stringify(currentEntries, null, 2)}\n`, "utf8");
+    }
 
     return NextResponse.json({
       ok: true,
