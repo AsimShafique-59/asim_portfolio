@@ -416,6 +416,7 @@ export default function PortfolioPage() {
 
   const handleContactSubmit = async (event) => {
     event.preventDefault();
+    const formElement = event.currentTarget;
 
     const errors = validateContactForm(formData);
     if (Object.keys(errors).length) {
@@ -449,15 +450,12 @@ export default function PortfolioPage() {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded"
           },
-          body: formBody,
-          redirect: "manual"
+          body: formBody
         });
 
-        const isRedirect =
-          response.status === 0 || response.status === 301 || response.status === 302 || response.status === 303;
-
-        if (!response.ok && !isRedirect) {
-          throw new Error("Netlify form submit failed.");
+        if (!response.ok) {
+          formElement.submit();
+          return;
         }
       } else {
         const response = await fetch("/api/contact", {
@@ -489,6 +487,11 @@ export default function PortfolioPage() {
       setFormData({ name: "", email: "", subject: "", message: "" });
       setFormErrors({});
     } catch {
+      if (!isLocalhost) {
+        formElement.submit();
+        return;
+      }
+
       setFormStatus({
         type: "warning",
         message: "Your message could not be delivered. Please try again or email me directly."
