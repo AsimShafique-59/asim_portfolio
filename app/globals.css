@@ -1292,6 +1292,16 @@ main,
     max-width: none;
   }
 
+  .hero-visual {
+    order: 2;
+    width: 100%;
+    justify-items: center;
+  }
+
+  .hero-portrait {
+    margin: 0 auto;
+  }
+
   .hero-actions {
     justify-content: center;
   }
@@ -1363,6 +1373,12 @@ main,
   }
 }
 
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 @media (max-width: 767.98px) {
   .hero-portrait {
     padding: 0.4rem;
@@ -1374,6 +1390,7 @@ main,
 
   .hero-mini-cards {
     width: 100%;
+    grid-template-columns: 1fr;
   }
 
   .project-showcase-grid {
