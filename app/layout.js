@@ -89,7 +89,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en">
       <body className={`${spaceGrotesk.variable} ${fraunces.variable} ${jetBrainsMono.variable}`}>{children}</body>
     </html>
   );

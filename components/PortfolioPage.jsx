@@ -171,7 +171,6 @@ export default function PortfolioPage() {
 
   const [activeSection, setActiveSection] = useState("#home");
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [theme, setTheme] = useState("light");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -231,14 +230,6 @@ export default function PortfolioPage() {
     () => experiences.find((experience) => experience.isCurrent) || experiences[0],
     [experiences]
   );
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem("theme");
-    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
-    setTheme(initialTheme);
-    document.documentElement.dataset.theme = initialTheme;
-  }, []);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -401,13 +392,6 @@ export default function PortfolioPage() {
     setIsNavOpen(false);
   };
 
-  const handleThemeToggle = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    document.documentElement.dataset.theme = nextTheme;
-    window.localStorage.setItem("theme", nextTheme);
-  };
-
   const handleFormInput = (event) => {
     const { name, value } = event.target;
     setFormData((previous) => ({ ...previous, [name]: value }));
@@ -550,17 +534,6 @@ export default function PortfolioPage() {
                   </a>
                 </li>
               ))}
-              <li className="nav-item nav-actions">
-                <button
-                  className="theme-toggle"
-                  type="button"
-                  onClick={handleThemeToggle}
-                  aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                  aria-pressed={theme === "dark"}
-                >
-                  <i className={`bi ${theme === "dark" ? "bi-sun-fill" : "bi-moon-stars-fill"}`} />
-                </button>
-              </li>
             </ul>
           </div>
         </nav>

@@ -1,30 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AS monogram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AS monogram logo">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#ff6b4a" />
-      <stop offset="50%" stop-color="#f4d35e" />
-      <stop offset="100%" stop-color="#2a9d8f" />
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#056774" />
+      <stop offset="50%" stop-color="#0a8fa3" />
+      <stop offset="100%" stop-color="#2db4cc" />
     </linearGradient>
-    <radialGradient id="glow" cx="35%" cy="30%" r="60%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.65" />
+    <radialGradient id="glowEffect" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
     </radialGradient>
+    <filter id="shadowFilter" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity="0.15" />
+    </filter>
   </defs>
-  <rect width="512" height="512" rx="110" fill="url(#bg)" />
-  <rect width="512" height="512" rx="110" fill="url(#glow)" />
-  <circle cx="256" cy="256" r="190" fill="none" stroke="#1f1a16" stroke-opacity="0.18" stroke-width="14" />
-  <circle cx="256" cy="256" r="160" fill="#fffaf3" fill-opacity="0.9" />
-  <text
-    x="50%"
-    y="52%"
-    text-anchor="middle"
-    dominant-baseline="middle"
-    font-family="Space Grotesk, Arial, sans-serif"
-    font-size="180"
-    font-weight="700"
-    letter-spacing="10"
-    fill="#1f1a16"
-  >
-    AS
-  </text>
+  
+  <!-- Background circle with gradient -->
+  <circle cx="256" cy="256" r="240" fill="url(#logoGradient)" filter="url(#shadowFilter)" />
+  
+  <!-- Glow effect overlay -->
+  <circle cx="256" cy="256" r="240" fill="url(#glowEffect)" />
+  
+  <!-- Inner circle accent ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#ffffff" stroke-width="8" stroke-opacity="0.3" />
+  
+  <!-- Geometric shapes - representing "A" and "S" with modern design -->
+  <!-- Left shape - "A" with geometric accent -->
+  <g>
+    <!-- Triangle outline for "A" -->
+    <path d="M 160 350 L 220 150 L 280 350" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Horizontal bar in "A" -->
+    <line x1="180" y1="280" x2="260" y2="280" stroke="#ffffff" stroke-width="20" stroke-linecap="round" />
+  </g>
+  
+  <!-- Right shape - "S" with flowing curves -->
+  <g>
+    <!-- Top curve of S -->
+    <path d="M 320 170 Q 360 170 360 210 Q 360 240 330 255" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Bottom curve of S -->
+    <path d="M 330 257 Q 360 272 360 302 Q 360 342 320 342 Q 280 342 280 302" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  
+  <!-- Decorative corner accents -->
+  <circle cx="100" cy="100" r="12" fill="#ffffff" opacity="0.6" />
+  <circle cx="412" cy="412" r="12" fill="#ffffff" opacity="0.6" />
+  <circle cx="412" cy="100" r="8" fill="#ffffff" opacity="0.4" />
+  <circle cx="100" cy="412" r="8" fill="#ffffff" opacity="0.4" />
+  
+  <!-- Subtle animated accent line -->
+  <line x1="256" y1="200" x2="256" y2="190" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.5" />
 </svg>
