@@ -1,0 +1,209 @@
+%-------------------------
+% Resume in LaTeX
+% Author : Adapted for Asim Shafique
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+\pdfgentounicode=1
+
+% Custom commands
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & #2 \\
+  \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]} 
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape Asim Shafique} \\ \vspace{2pt}
+    +92 325 4155556 $|$ 
+    \href{mailto:asimshafique59@gmail.com}{asimshafique59@gmail.com} $|$ 
+    \href{https://github.com/AsimShafique-59}{GitHub} $|$ 
+    \href{https://www.linkedin.com/in/muhammad-asim-shafique-0581411aa}{LinkedIn} $|$ 
+    \href{https://asimshafique.netlify.app/}{Portfolio}
+\end{center}
+
+%-----------PROFILE-----------
+\section{Profile}
+Dedicated Python AI Engineer specializing in backend development, Django REST Framework, FastAPI, and generative AI engineering. Experienced in building scalable LLM-powered applications using LangChain, LangGraph, CrewAI, OpenAI Agent SDK, vector databases, and production-ready automation systems.
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+%==================== Hashed Systems ====================
+\resumeSubheading
+{\textbf{Hashed Systems}}{Present}
+{Python Django Developer}{Lahore, Pakistan}
+\resumeItemListStart
+  \resumeItem{Designed, developed, and maintained production-grade backend systems using Python, Django, and Django REST Framework (DRF).}
+  \resumeItem{Architected and optimized RESTful APIs with JWT authentication, role-based access control (RBAC), and secure authorization workflows.}
+  \resumeItem{Led PostgreSQL database design, schema migrations, indexing strategies, and query performance optimization.}
+  \resumeItem{Implemented robust CRUD operations, data validation, structured error handling, and API testing using Postman.}
+\resumeItemListEnd
+
+%==================== Web Excels ====================
+\resumeSubheading
+{\textbf{WEB EXCELS}}{November 2025 -- January 2026}
+{AI Engineer}{Lahore, Pakistan}
+\resumeItemListStart
+  \resumeItem{Developed AI-driven backend applications using Python, LangChain, OpenAI API, and vector database technologies.}
+  \resumeItem{Designed and optimized LLM pipelines for chatbots, data extraction, and automation workflows.}
+  \resumeItem{Integrated AI models into production backend systems with scalability, data validation, and monitoring.}
+  \resumeItem{Performed prompt engineering, model evaluation, and iterative accuracy improvements for conversational agents.}
+\resumeItemListEnd
+
+%==================== Artificizen ====================
+\resumeSubheading
+{\textbf{ARTIFICIZEN}}{April 2025 -- September 2025}
+{Software Engineer – Backend \& AI Systems}{Lahore, Pakistan}
+\resumeItemListStart
+  \resumeItem{Designed and developed intelligent chatbot systems using LangChain, LangGraph, CrewAI, and OpenAI SDK.}
+  \resumeItem{Built backend services with Python, Django, and DRF, integrating database systems and JWT authentication.}
+  \resumeItem{Developed and tested RESTful APIs for AI system integration using Postman and automated test workflows.}
+  \resumeItem{Collaborated with cross-functional teams to deliver AI-driven backend solutions aligned with business requirements.}
+\resumeItemListEnd
+
+%==================== AB IT ====================
+\resumeSubheading
+{\textbf{AB IT and Technical Services Limited}}{June 2024 -- June 2025}
+{Python Backend Developer}{United Kingdom (Remote)}
+\resumeItemListStart
+  \resumeItem{Designed and implemented backend systems using Python, Django, and DRF with PostgreSQL, MySQL, and MongoDB integration.}
+  \resumeItem{Developed scalable RESTful APIs and backend services with secure JWT/OAuth2 authentication.}
+  \resumeItem{Containerized and deployed applications using Docker and implemented CI/CD pipelines with GitHub Actions / GitLab CI.}
+  \resumeItem{Ensured code quality, version control, and production stability across cloud and remote environments.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\textbf{Reachgin -- Multi-Industry POS}}{2026}
+\resumeItemListStart
+  \resumeItem{Architected a scalable backend system (35+ apps, 150+ models) for a multi-industry POS platform with centralized admin management.}
+  \resumeItem{Implemented RESTful APIs with JWT authentication (SimpleJWT), token rotation, blacklisting, and role-based access control.}
+  \resumeItem{Designed a service-layer architecture with UUID primary keys, soft deletes, transaction management, invoicing, and promotions.}
+  \resumeItem{Integrated asynchronous task queues (Celery, Redis), cloud storage (AWS S3), push notifications (Firebase FCM), and OpenAPI documentation.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Venuze -- Venue Booking Platform}}{2026}
+\resumeItemListStart
+  \resumeItem{Built scalable REST APIs with FastAPI, PostgreSQL, SQLAlchemy, and Redis, including JWT auth and token blacklisting.}
+  \resumeItem{Developed venue booking workflows with AWS S3 media uploads, availability calendars, invoices, coupon systems, dispute handling, and real-time chat.}
+  \resumeItem{Integrated Stripe payments, OAuth2 login, Firebase notifications, and optimized async performance using asyncio and background workers.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Power Email AI}}{2025}
+\resumeItemListStart
+  \resumeItem{Engineered an AI email automation system with intelligent reply generation, inbox routing, sequences, campaigns, and rule-based workflows.}
+  \resumeItem{Developed modular backend services with JWT auth, encrypted credential storage, and AWS SES email automation.}
+  \resumeItem{Built AI-driven features for context-aware response generation and accuracy improvements using OpenAI-powered pipelines.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Peer Learning Circle Web Application}}{2025}
+\resumeItemListStart
+  \resumeItem{Built a Django-based collaboration platform for students to create and manage study groups with customized admin controls.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Sophia Bot -- AI Healthcare Assistant}}{2025}
+\resumeItemListStart
+  \resumeItem{Developed a healthcare chatbot with context-aware responses, conversation history tracking, and integration-ready architecture for EHR workflows.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {\href{https://drive.google.com/file/d/1aIIAQlgccWA_iy6n1lcNw9FU-gNtkcXa/view}{Qualifi Level 5 Diploma in Information Technology}}{2025}
+    {Qualifi (UK Accredited)}{Lahore, Pakistan}
+\resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Skills}
+\resumeItemListStart
+\resumeItem{\textbf{Languages \& Frameworks:} Python, SQL, Django, DRF, FastAPI, Flask, JavaScript, HTML, CSS.}
+\resumeItem{\textbf{AI \& LLM Engineering:} LangChain, LangGraph, CrewAI, OpenAI SDK, Gemini, Groq, RAG, vector databases, embeddings, semantic search, chatbot pipelines, agentic AI systems.}
+\resumeItem{\textbf{Backend Architecture:} REST APIs, microservices, JWT auth, WebSockets, async processing, Celery, event-driven systems, clean architecture.}
+\resumeItem{\textbf{Databases \& Storage:} PostgreSQL, MySQL, MongoDB, SQLite, Chroma, Pinecone, FAISS, advanced SQL design and optimization.}
+\resumeItem{\textbf{Cloud \& DevOps:} AWS (S3, EC2), Google Cloud, Alibaba Cloud, Docker, Vercel, Render, GitHub Actions, Git, Postman.}
+\resumeItem{\textbf{Operating Systems:} Ubuntu Linux, Windows.}
+\resumeItem{\textbf{Soft Skills:} Agile collaboration, problem-solving, system design, technical documentation, product-minded engineering.}
+\resumeItemListEnd
+
+%-----------LANGUAGES-----------
+\section{Languages}
+\resumeItemListStart
+\resumeItem{English}
+\resumeItem{Urdu}
+\resumeItem{German}
+\resumeItemListEnd
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+\resumeItemListStart
+\resumeItem{\textbf{IELTS Academic:} Overall Band Score -- 6.0}
+\resumeItemListEnd
+
+\end{document}
