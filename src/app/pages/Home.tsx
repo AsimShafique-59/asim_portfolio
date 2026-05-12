@@ -93,6 +93,15 @@ export default function Home() {
                   Get In Touch
                 </motion.button>
               </Link>
+              <a href="/resume.tex" target="_blank" rel="noopener noreferrer">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-white border-2 border-purple-600 text-purple-600 rounded-2xl font-semibold shadow-lg hover:bg-purple-50 transition-colors"
+                >
+                  View Resume
+                </motion.button>
+              </a>
             </div>
           </motion.div>
 
