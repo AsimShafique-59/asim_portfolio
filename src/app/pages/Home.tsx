@@ -93,7 +93,7 @@ export default function Home() {
                   Get In Touch
                 </motion.button>
               </Link>
-              <a href="/resume.tex" target="_blank" rel="noopener noreferrer">
+              <Link to="/resume" reloadDocument>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -101,7 +101,7 @@ export default function Home() {
                 >
                   View Resume
                 </motion.button>
-              </a>
+              </Link>
             </div>
           </motion.div>
 

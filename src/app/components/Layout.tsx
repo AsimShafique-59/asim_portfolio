@@ -22,6 +22,7 @@ export default function Layout() {
     { path: "/skills", label: "Skills" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
+    { path: "/resume", label: "Resume" },
   ];
 
   return (
@@ -120,14 +121,6 @@ export default function Layout() {
                   )}
                 </Link>
               ))}
-              <a
-                href="/resume.tex"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-700 hover:text-indigo-600 transition-colors"
-              >
-                Resume
-              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -163,14 +156,6 @@ export default function Layout() {
                     {item.label}
                   </Link>
                 ))}
-                <a
-                  href="/resume.tex"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block py-3 px-4 rounded-lg transition-colors text-gray-700 hover:bg-indigo-50"
-                >
-                  Resume
-                </a>
               </motion.div>
             )}
           </AnimatePresence>
