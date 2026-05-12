@@ -83,9 +83,13 @@ export default function Layout() {
               <motion.div
                 whileHover={{ scale: 1.08 }}
                 transition={{ duration: 0.2 }}
-                className="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-pink-600 text-white font-bold flex items-center justify-center shadow-lg"
+                className="w-10 h-10 rounded-xl shadow-lg overflow-hidden"
               >
-                AS
+                <img
+                  src="/logo.svg"
+                  alt="Asim logo"
+                  className="w-full h-full object-cover"
+                />
               </motion.div>
               <span className="font-bold text-xl bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent">
                 Asim Shafique
