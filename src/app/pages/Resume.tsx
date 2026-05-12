@@ -5,7 +5,7 @@ export default function Resume() {
   const experience = [
     {
       title: "Django Python Developer",
-      company: "Hased Systems",
+      company: "Hashed Systems",
       period: "2026",
       summary:
         "Built and maintained scalable Django + DRF APIs with production reliability focus.",

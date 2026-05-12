@@ -6,7 +6,7 @@ export default function About() {
     {
       year: "2026",
       title: "Django Python Developer",
-      company: "Hased Systems",
+      company: "Hashed Systems",
       description: "Building and maintaining backend services using Django and Django REST Framework, with a focus on scalable APIs and production reliability.",
       color: "from-purple-500 to-pink-500"
     },
