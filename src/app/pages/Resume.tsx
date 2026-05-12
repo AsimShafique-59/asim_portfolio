@@ -23,6 +23,13 @@ export default function Resume() {
       period: "2025",
       summary: "Delivered chatbot and backend solutions for real client products.",
     },
+    {
+      title: "Python Backend Developer",
+      company: "AB IT and Technical Services Limited",
+      period: "2024",
+      summary:
+        "Developed scalable backend services, APIs, and deployment pipelines for production systems.",
+    },
   ];
 
   const skills = [
