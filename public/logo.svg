@@ -6,6 +6,5 @@
     </linearGradient>
   </defs>
   <rect width="128" height="128" rx="24" fill="url(#g1)"/>
-  <path d="M36 84V44H56C66.5 44 73 49.7 73 58.4C73 65.6 68.3 70.7 60.6 72.1L74 84H62.2L50.8 73.5H46.4V84H36ZM46.4 64.8H55.1C60 64.8 62.9 62.5 62.9 58.5C62.9 54.5 60 52.2 55.1 52.2H46.4V64.8Z" fill="white"/>
-  <path d="M76 84L89.7 44H102L115.7 84H105.2L102.4 75.4H89.2L86.5 84H76ZM91.8 67.5H99.9L95.8 54.7L91.8 67.5Z" fill="white"/>
+  <text x="64" y="81" text-anchor="middle" fill="white" font-size="56" font-weight="700" font-family="Inter, Arial, sans-serif">AS</text>
 </svg>
