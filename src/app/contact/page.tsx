@@ -89,7 +89,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || submitted}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 shadow-[0_0_30px_-8px_var(--brand)] py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>

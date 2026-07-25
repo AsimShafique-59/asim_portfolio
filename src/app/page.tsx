@@ -47,13 +47,13 @@ export default function Home() {
     <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-6xl">
         {/* Hero Section */}
-        <div className="mb-28 grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid-bg relative mb-28 -mx-6 grid items-center gap-12 rounded-3xl px-6 py-16 lg:grid-cols-2">
           <div>
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="mb-4 bg-gradient-to-r from-brand to-brand-2 bg-clip-text text-6xl font-extrabold tracking-tight text-transparent md:text-7xl"
+              className="glow-text mb-4 bg-gradient-to-r from-glow-1 via-glow-2 to-glow-3 bg-clip-text text-6xl font-extrabold tracking-tight text-transparent md:text-7xl"
             >
               Asim Shafique
             </motion.h1>
@@ -85,14 +85,14 @@ export default function Home() {
             >
               <Link
                 href="/projects"
-                className="group flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white shadow-lg shadow-brand/20 transition-opacity hover:opacity-90"
+                className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white shadow-[0_0_30px_-8px_var(--brand)] transition-opacity hover:opacity-90"
               >
                 View Projects
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
                 href="/contact"
-                className="rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                className="rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
               >
                 Get In Touch
               </Link>
@@ -183,7 +183,7 @@ export default function Home() {
           <div className="mt-10 flex justify-center">
             <Link
               href="/projects"
-              className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 shadow-[0_0_30px_-8px_var(--brand)] px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               View All Projects
               <ArrowRight className="h-4 w-4" />
@@ -215,7 +215,7 @@ export default function Home() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 shadow-[0_0_30px_-8px_var(--brand)] px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             <Send className="h-4 w-4" />
             Get In Touch

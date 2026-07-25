@@ -35,7 +35,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
               href={project.demoLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 shadow-[0_0_30px_-8px_var(--brand)] px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               <ExternalLink className="h-4 w-4" />
               View Live
@@ -44,7 +44,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              className="flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               <Github className="h-4 w-4" />
               View Code
