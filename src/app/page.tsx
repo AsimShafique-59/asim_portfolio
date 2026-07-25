@@ -143,7 +143,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08, duration: 0.4 }}
               >
-                <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-border text-foreground">
+                <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
                   <area.icon className="h-5 w-5" />
                 </span>
                 <h3 className="mb-2 font-semibold text-foreground">{area.title}</h3>

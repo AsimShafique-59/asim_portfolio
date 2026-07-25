@@ -18,7 +18,7 @@ export function SkillBar({ skill, delay = 0 }: { skill: Skill; delay?: number })
     >
       <div className="mb-2 flex items-center justify-between">
         <span className="text-sm font-medium text-foreground">{skill.name}</span>
-        <span className="text-xs text-muted-foreground">{skill.level}%</span>
+        <span className="text-xs font-medium text-brand">{skill.level}%</span>
       </div>
       <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
         <motion.div
@@ -26,7 +26,7 @@ export function SkillBar({ skill, delay = 0 }: { skill: Skill; delay?: number })
           whileInView={{ width: `${skill.level}%` }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: delay + 0.2 }}
-          className="h-full rounded-full bg-foreground"
+          className="h-full rounded-full bg-gradient-to-r from-brand to-brand-2"
         />
       </div>
       <motion.p

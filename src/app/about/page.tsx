@@ -19,7 +19,12 @@ export default function AboutPage() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-5xl">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="grid-bg -mx-6 mb-16 rounded-3xl px-6 py-16 text-center"
+        >
           <Tilt intensity={16} className="mx-auto mb-6 h-20 w-20">
             <span className="flex h-20 w-20 items-center justify-center rounded-full border border-border bg-gradient-to-br from-brand/15 to-brand-2/15">
               <User className="h-8 w-8 text-brand" />
@@ -74,7 +79,7 @@ export default function AboutPage() {
                 transition={{ delay: index * 0.08, duration: 0.4 }}
                 className="flex items-start gap-4"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border text-foreground">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
                   <Award className="h-5 w-5" />
                 </span>
                 <div>
@@ -102,7 +107,7 @@ export default function AboutPage() {
                 transition={{ delay: index * 0.08, duration: 0.4 }}
                 className="text-center"
               >
-                <span className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-lg border border-border text-foreground">
+                <span className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
                   <interest.icon className="h-6 w-6" />
                 </span>
                 <h3 className="font-semibold text-foreground">{interest.label}</h3>

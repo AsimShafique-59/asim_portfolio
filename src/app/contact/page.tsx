@@ -27,11 +27,14 @@ export default function ContactPage() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-5xl">
-        <SectionHeading
-          icon={MessageSquare}
-          title="Get In Touch"
-          subtitle="Have a project in mind or want to collaborate? Let's build something amazing together."
-        />
+        <div className="grid-bg -mx-6 mb-10 rounded-3xl px-6 py-12">
+          <SectionHeading
+            icon={MessageSquare}
+            title="Get In Touch"
+            subtitle="Have a project in mind or want to collaborate? Let's build something amazing together."
+            className="mb-0"
+          />
+        </div>
 
         <div className="grid gap-10 lg:grid-cols-2">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
@@ -49,7 +52,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
-                    className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-colors focus:border-foreground/40"
+                    className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-2.5 text-foreground outline-none transition-all focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
                     placeholder="Your full name"
                   />
                 </div>
@@ -60,7 +63,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
-                    className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-colors focus:border-foreground/40"
+                    className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-2.5 text-foreground outline-none transition-all focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -71,7 +74,7 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     required
-                    className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-colors focus:border-foreground/40"
+                    className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-2.5 text-foreground outline-none transition-all focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
                     placeholder="Project inquiry"
                   />
                 </div>
@@ -82,7 +85,7 @@ export default function ContactPage() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
                     rows={5}
-                    className="w-full resize-none rounded-lg border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-colors focus:border-foreground/40"
+                    className="w-full resize-none rounded-lg border border-border bg-secondary/40 px-4 py-2.5 text-foreground outline-none transition-all focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
                     placeholder="Tell me about your project or collaboration idea..."
                   />
                 </div>
@@ -129,9 +132,9 @@ export default function ContactPage() {
                     href={method.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-4 rounded-lg border border-border p-4 transition-colors hover:border-foreground/30"
+                    className="group flex items-center gap-4 rounded-lg border border-border p-4 transition-all hover:border-brand/40 hover:bg-secondary/40"
                   >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border text-foreground">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
                       <method.icon className="h-5 w-5" />
                     </span>
                     <div>
@@ -160,7 +163,7 @@ export default function ContactPage() {
             </Card>
 
             <Card className="flex items-start gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border text-foreground">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
                 <MessageSquare className="h-5 w-5" />
               </span>
               <div>

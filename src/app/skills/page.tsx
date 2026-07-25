@@ -18,7 +18,14 @@ export default function SkillsPage() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading icon={Cpu} title="Python & AI Stack" subtitle="Technical expertise and tooling used to build backend and AI systems." />
+        <div className="grid-bg -mx-6 mb-10 rounded-3xl px-6 py-12">
+          <SectionHeading
+            icon={Cpu}
+            title="Python & AI Stack"
+            subtitle="Technical expertise and tooling used to build backend and AI systems."
+            className="mb-0"
+          />
+        </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category, categoryIndex) => (
@@ -30,7 +37,7 @@ export default function SkillsPage() {
               transition={{ delay: categoryIndex * 0.06, duration: 0.4 }}
             >
               <div className="mb-6 flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-border text-foreground">
+                <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
                   <category.icon className="h-5 w-5" />
                 </span>
                 <h3 className="text-lg font-extrabold tracking-tight text-foreground">{category.title}</h3>
