@@ -4,7 +4,17 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import type { Skill } from "@/lib/data/skills";
 
-export function SkillBar({ skill, delay = 0 }: { skill: Skill; delay?: number }) {
+export function SkillBar({
+  skill,
+  delay = 0,
+  barClass = "from-brand to-brand-2",
+  textClass = "text-brand",
+}: {
+  skill: Skill;
+  delay?: number;
+  barClass?: string;
+  textClass?: string;
+}) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -18,7 +28,7 @@ export function SkillBar({ skill, delay = 0 }: { skill: Skill; delay?: number })
     >
       <div className="mb-2 flex items-center justify-between">
         <span className="text-sm font-medium text-foreground">{skill.name}</span>
-        <span className="text-xs font-medium text-brand">{skill.level}%</span>
+        <span className={`text-xs font-medium ${textClass}`}>{skill.level}%</span>
       </div>
       <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
         <motion.div
@@ -26,7 +36,7 @@ export function SkillBar({ skill, delay = 0 }: { skill: Skill; delay?: number })
           whileInView={{ width: `${skill.level}%` }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: delay + 0.2 }}
-          className="h-full rounded-full bg-gradient-to-r from-brand to-brand-2"
+          className={`h-full rounded-full bg-gradient-to-r ${barClass}`}
         />
       </div>
       <motion.p

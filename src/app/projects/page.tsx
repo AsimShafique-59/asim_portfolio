@@ -2,10 +2,16 @@
 
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Code2 } from "lucide-react";
+import { Code2, Layers, Github } from "lucide-react";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ProjectCard } from "@/components/blocks/ProjectCard";
 import { projects, projectCategories } from "@/lib/data/projects";
+
+const stats = [
+  { icon: Layers, value: `${projects.length}+`, label: "Shipped Projects" },
+  { icon: Code2, value: `${projectCategories.length - 1}`, label: "Focus Areas" },
+  { icon: Github, value: "Open Source", label: "Code on GitHub" },
+];
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -19,7 +25,21 @@ export default function ProjectsPage() {
           <SectionHeading icon={Code2} title="Featured Projects" subtitle="Real-world Python, Django, and AI systems built for production." className="mb-0" />
         </div>
 
-        <div className="mb-12 mt-10 flex flex-wrap justify-center gap-3">
+        <div className="mb-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
+          {stats.map((stat) => (
+            <div key={stat.label} className="flex items-center gap-4 bg-card p-6">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
+                <stat.icon className="h-5 w-5" />
+              </span>
+              <div>
+                <div className="text-lg font-extrabold tracking-tight text-foreground">{stat.value}</div>
+                <div className="text-xs text-muted-foreground">{stat.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mb-12 flex flex-wrap justify-center gap-3">
           {projectCategories.map((cat) => (
             <button
               key={cat}
