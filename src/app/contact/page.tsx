@@ -89,11 +89,11 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || submitted}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
                       Sending...
                     </>
                   ) : submitted ? (

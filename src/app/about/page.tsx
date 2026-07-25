@@ -5,6 +5,7 @@ import { User, Award, Briefcase, GraduationCap, Code, Rocket, Cpu, Sparkles } fr
 import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { Timeline } from "@/components/blocks/Timeline";
+import { Tilt } from "@/components/blocks/Tilt";
 import { experience, certifications } from "@/lib/data/experience";
 
 const interests = [
@@ -19,9 +20,11 @@ export default function AboutPage() {
     <div className="px-6 pb-24 pt-16 sm:pt-24">
       <div className="mx-auto max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-16 text-center">
-          <span className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-border">
-            <User className="h-7 w-7 text-foreground" />
-          </span>
+          <Tilt intensity={16} className="mx-auto mb-6 h-20 w-20">
+            <span className="flex h-20 w-20 items-center justify-center rounded-full border border-border bg-gradient-to-br from-brand/15 to-brand-2/15">
+              <User className="h-8 w-8 text-brand" />
+            </span>
+          </Tilt>
           <h1 className="mb-4 font-serif text-5xl font-semibold text-foreground md:text-6xl">About Me</h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">
             I&apos;m a Python and AI engineer with a strong background in backend development, LLM integration, and product-focused

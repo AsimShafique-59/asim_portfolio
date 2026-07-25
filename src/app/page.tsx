@@ -6,6 +6,7 @@ import { ArrowRight, Sparkles, Cpu, Code2, Server, Bot, Cloud, Network, Briefcas
 import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ProjectCard } from "@/components/blocks/ProjectCard";
+import { Hero3D } from "@/components/blocks/Hero3D";
 import { featuredProjects } from "@/lib/data/projects";
 import { topSkills } from "@/lib/data/skills";
 import { experience } from "@/lib/data/experience";
@@ -46,74 +47,85 @@ export default function Home() {
     <div className="px-6 pb-24 pt-16 sm:pt-24">
       <div className="mx-auto max-w-6xl">
         {/* Hero Section */}
-        <div className="mb-28 max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
-          >
-            <Sparkles className="h-3.5 w-3.5" />
-            AI-Powered Development
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.05 }}
-            className="mb-4 font-serif text-6xl font-semibold text-foreground md:text-7xl"
-          >
-            Asim Shafique
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="mb-6 text-xl font-medium text-foreground/80 sm:text-2xl"
-          >
-            Python, DRF &amp; Generative AI Engineer
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.15 }}
-            className="mb-8 text-lg leading-relaxed text-muted-foreground"
-          >
-            Python and AI engineer with 2+ years of experience building scalable backend systems, LLM-powered applications, and
-            production-grade automations. Focused on Django/DRF, FastAPI, agentic RAG, and cloud deployment.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="flex flex-wrap items-center gap-4"
-          >
-            <Link
-              href="/projects"
-              className="group flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+        <div className="mb-28 grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
             >
-              View Projects
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              <Sparkles className="h-3.5 w-3.5 text-brand" />
+              AI-Powered Development
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.05 }}
+              className="mb-4 bg-gradient-to-r from-brand to-brand-2 bg-clip-text font-serif text-6xl font-semibold text-transparent md:text-7xl"
             >
-              Get In Touch
-            </Link>
-          </motion.div>
+              Asim Shafique
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="mb-6 text-xl font-medium text-foreground/80 sm:text-2xl"
+            >
+              Python, DRF &amp; Generative AI Engineer
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="mb-8 text-lg leading-relaxed text-muted-foreground"
+            >
+              Python and AI engineer with 2+ years of experience building scalable backend systems, LLM-powered applications, and
+              production-grade automations. Focused on Django/DRF, FastAPI, agentic RAG, and cloud deployment.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <Link
+                href="/projects"
+                className="group flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white shadow-lg shadow-brand/20 transition-opacity hover:opacity-90"
+              >
+                View Projects
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              >
+                Get In Touch
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
+              className="mt-8 flex items-center gap-2 text-sm text-muted-foreground"
+            >
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+              Currently building at {latestRole.company} · Lahore, Pakistan
+            </motion.div>
+          </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.25 }}
-            className="mt-8 flex items-center gap-2 text-sm text-muted-foreground"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="hidden lg:block"
           >
-            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-            Currently building at {latestRole.company} · Lahore, Pakistan
+            <Hero3D />
           </motion.div>
         </div>
 
@@ -181,7 +193,7 @@ export default function Home() {
           <div className="mt-10 flex justify-center">
             <Link
               href="/projects"
-              className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+              className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               View All Projects
               <ArrowRight className="h-4 w-4" />
@@ -213,7 +225,7 @@ export default function Home() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             <Send className="h-4 w-4" />
             Get In Touch

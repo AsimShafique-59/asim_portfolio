@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
 import { Card } from "./Card";
+import { Tilt } from "./Tilt";
 import type { Project } from "@/lib/data/projects";
 
 export function ProjectCard({ project, index = 0, compact = false }: { project: Project; index?: number; compact?: boolean }) {
@@ -19,9 +20,11 @@ export function ProjectCard({ project, index = 0, compact = false }: { project: 
       className="group flex flex-col"
     >
       <div className="mb-4 flex items-start justify-between gap-2">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border text-foreground">
-          <Icon className="h-5 w-5" />
-        </span>
+        <Tilt intensity={18} className="h-11 w-11 shrink-0">
+          <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
+            <Icon className="h-5 w-5" />
+          </span>
+        </Tilt>
         <div className="flex shrink-0 gap-3 pt-1">
           <a
             href={project.githubLink}

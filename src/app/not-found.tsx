@@ -52,7 +52,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             <Home className="h-4 w-4" />
             Back to Home
