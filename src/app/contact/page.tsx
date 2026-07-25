@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { MapPin, Send, MessageSquare, Phone } from "lucide-react";
+import { MapPin, Send, MessageSquare, Phone, ArrowUpRight } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
@@ -27,17 +27,27 @@ export default function ContactPage() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-5xl">
-        <div className="grid-bg -mx-6 mb-10 rounded-3xl px-6 py-12">
+        <div className="grid-bg -mx-6 mb-6 rounded-3xl px-6 py-12 text-center">
           <SectionHeading
             icon={MessageSquare}
-            title="Get In Touch"
-            subtitle="Have a project in mind or want to collaborate? Let's build something amazing together."
-            className="mb-0"
+            title="Let's Build Something Amazing"
+            subtitle="Have a project in mind or want to collaborate? I'd love to hear about it."
+            className="mb-6"
           />
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-sm text-muted-foreground">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+            Available for new projects
+          </span>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-2">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
+        <div className="grid gap-10 lg:grid-cols-5">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="lg:col-span-3"
+          >
             <Card className="p-8">
               <h2 className="mb-6 flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground">
                 <Send className="h-5 w-5 text-muted-foreground" />
@@ -45,27 +55,29 @@ export default function ContactPage() {
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-foreground">Your Name</label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-2.5 text-foreground outline-none transition-all focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
-                    placeholder="Your full name"
-                  />
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-foreground">Email Address</label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-2.5 text-foreground outline-none transition-all focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
-                    placeholder="you@example.com"
-                  />
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-foreground">Your Name</label>
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
+                      className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-2.5 text-foreground outline-none transition-all focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-foreground">Email Address</label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                      className="w-full rounded-lg border border-border bg-secondary/40 px-4 py-2.5 text-foreground outline-none transition-all focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
+                      placeholder="you@example.com"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label className="mb-2 block text-sm font-medium text-foreground">Subject</label>
@@ -92,7 +104,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || submitted}
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 shadow-[0_0_30px_-8px_var(--brand)] py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 py-3 text-sm font-medium text-white shadow-[0_0_30px_-8px_var(--brand)] transition-opacity hover:opacity-90 disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>
@@ -117,11 +129,11 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="space-y-6"
+            className="space-y-6 lg:col-span-2"
           >
-            <Card className="p-8">
-              <h2 className="mb-6 flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground">
-                <Phone className="h-5 w-5 text-muted-foreground" />
+            <Card className="p-6">
+              <h2 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                <Phone className="h-4 w-4" />
                 Contact Information
               </h2>
 
@@ -132,45 +144,43 @@ export default function ContactPage() {
                     href={method.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-4 rounded-lg border border-border p-4 transition-all hover:border-brand/40 hover:bg-secondary/40"
+                    className="group flex items-center gap-4 rounded-lg border border-border p-3.5 transition-all hover:border-brand/40 hover:bg-secondary/40"
                   >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
-                      <method.icon className="h-5 w-5" />
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
+                      <method.icon className="h-4 w-4" />
                     </span>
-                    <div>
-                      <div className="text-sm text-muted-foreground">{method.title}</div>
-                      <div className="font-medium text-foreground transition-colors group-hover:text-brand">{method.value}</div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-xs text-muted-foreground">{method.title}</div>
+                      <div className="truncate font-medium text-foreground transition-colors group-hover:text-brand">{method.value}</div>
                     </div>
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                   </a>
                 ))}
               </div>
             </Card>
 
-            <Card className="p-8">
-              <div className="mb-4 flex items-center gap-3">
-                <MapPin className="h-5 w-5 text-muted-foreground" />
-                <h3 className="text-lg font-extrabold tracking-tight text-foreground">Location</h3>
+            <Card className="grid-bg relative overflow-hidden p-6">
+              <div className="mb-3 flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
+                  <MapPin className="h-4 w-4" />
+                </span>
+                <h3 className="font-extrabold tracking-tight text-foreground">Location</h3>
               </div>
-              <p className="mb-1 text-foreground">Lahore, Pakistan</p>
+              <p className="text-foreground">Lahore, Pakistan</p>
               <p className="text-sm text-muted-foreground">Available for remote work worldwide</p>
-
-              <div className="mt-5 border-t border-border pt-5">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                  Available for new projects
-                </div>
-              </div>
             </Card>
 
-            <Card className="flex items-start gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
-                <MessageSquare className="h-5 w-5" />
-              </span>
-              <div>
-                <h3 className="mb-2 font-semibold text-foreground">Quick Response Time</h3>
-                <p className="text-sm text-muted-foreground">
-                  I typically respond to emails within 24 hours. For urgent matters, feel free to reach out on LinkedIn.
-                </p>
+            <Card className="p-6">
+              <div className="flex items-start gap-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
+                  <MessageSquare className="h-4 w-4" />
+                </span>
+                <div>
+                  <h3 className="mb-1 font-semibold text-foreground">Quick Response Time</h3>
+                  <p className="text-sm text-muted-foreground">
+                    I typically respond within 24 hours. For urgent matters, reach out on LinkedIn.
+                  </p>
+                </div>
               </div>
             </Card>
           </motion.div>
