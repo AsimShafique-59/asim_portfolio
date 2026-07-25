@@ -1,12 +1,14 @@
 "use client";
 
 import { motion } from "motion/react";
-import { User, Award, Briefcase, GraduationCap, Code, Rocket, Cpu, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { User, Award, Briefcase, GraduationCap, Code, Rocket, Cpu, Sparkles, MapPin, Mail, Clock, ArrowRight } from "lucide-react";
 import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { Timeline } from "@/components/blocks/Timeline";
 import { Tilt } from "@/components/blocks/Tilt";
 import { experience, certifications } from "@/lib/data/experience";
+import { contactMethods } from "@/lib/data/contact";
 
 const interests = [
   { icon: Code, label: "Python Backend Engineering" },
@@ -15,27 +17,69 @@ const interests = [
   { icon: Rocket, label: "SaaS Product Engineering" },
 ];
 
+const latestRole = experience[0];
+const email = contactMethods.find((m) => m.title === "Email");
+
+const quickFacts = [
+  { icon: Briefcase, label: "Currently", value: `${latestRole.title} @ ${latestRole.company}` },
+  { icon: MapPin, label: "Location", value: "Lahore, Pakistan" },
+  { icon: Clock, label: "Availability", value: "Open to remote work worldwide" },
+  { icon: Mail, label: "Email", value: email?.value ?? "" },
+];
+
 export default function AboutPage() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="grid-bg -mx-6 mb-16 rounded-3xl px-6 py-16 text-center"
-        >
-          <Tilt intensity={16} className="mx-auto mb-6 h-20 w-20">
-            <span className="flex h-20 w-20 items-center justify-center rounded-full border border-border bg-gradient-to-br from-brand/15 to-brand-2/15">
-              <User className="h-8 w-8 text-brand" />
-            </span>
-          </Tilt>
-          <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-foreground md:text-6xl">About Me</h1>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            I&apos;m a Python and AI engineer with a strong background in backend development, LLM integration, and product-focused
-            engineering. I specialize in scalable Python services, API design, and intelligent AI workflows.
-          </p>
-        </motion.div>
+        <div className="grid-bg -mx-6 mb-16 grid items-center gap-10 rounded-3xl px-6 py-16 lg:grid-cols-5">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="lg:col-span-3"
+          >
+            <Tilt intensity={16} className="mb-6 h-20 w-20">
+              <span className="flex h-20 w-20 items-center justify-center rounded-full border border-border bg-gradient-to-br from-brand/15 to-brand-2/15">
+                <User className="h-8 w-8 text-brand" />
+              </span>
+            </Tilt>
+            <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-foreground md:text-6xl">About Me</h1>
+            <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
+              I&apos;m a Python and AI engineer with a strong background in backend development, LLM integration, and product-focused
+              engineering. I specialize in scalable Python services, API design, and intelligent AI workflows.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white shadow-[0_0_30px_-8px_var(--brand)] transition-opacity hover:opacity-90"
+            >
+              Get In Touch
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="lg:col-span-2"
+          >
+            <Card className="p-6">
+              <div className="space-y-4">
+                {quickFacts.map((fact) => (
+                  <div key={fact.label} className="flex items-start gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
+                      <fact.icon className="h-4 w-4" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="text-xs text-muted-foreground">{fact.label}</div>
+                      <div className="truncate text-sm font-medium text-foreground">{fact.value}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+        </div>
 
         <Card
           initial={{ opacity: 0, y: 16 }}
