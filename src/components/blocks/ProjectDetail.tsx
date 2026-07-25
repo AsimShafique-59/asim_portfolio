@@ -21,7 +21,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
         </Link>
 
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-          <span className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg border border-border text-foreground">
+          <span className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
             <Icon className="h-6 w-6" />
           </span>
 
@@ -56,7 +56,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
             <div className="space-y-3">
               {project.details.map((detail) => (
                 <div key={detail} className="flex gap-3 text-muted-foreground">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40" />
+                  <span className="shrink-0 font-bold text-brand">▹</span>
                   <span>{detail}</span>
                 </div>
               ))}

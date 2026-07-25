@@ -59,7 +59,7 @@ export function ProjectCard({ project, index = 0, compact = false }: { project: 
         <div className="mt-4 space-y-2 text-sm leading-snug text-muted-foreground">
           {project.details.map((detail) => (
             <div key={detail} className="flex gap-2">
-              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground" />
+              <span className="shrink-0 font-bold text-brand">▹</span>
               <span>{detail}</span>
             </div>
           ))}

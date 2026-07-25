@@ -15,17 +15,19 @@ export default function ProjectsPage() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading icon={Code2} title="Featured Projects" subtitle="Real-world Python, Django, and AI systems built for production." />
+        <div className="grid-bg -mx-6 mb-4 rounded-3xl px-6 py-12">
+          <SectionHeading icon={Code2} title="Featured Projects" subtitle="Real-world Python, Django, and AI systems built for production." className="mb-0" />
+        </div>
 
-        <div className="mb-12 flex flex-wrap justify-center gap-3">
+        <div className="mb-12 mt-10 flex flex-wrap justify-center gap-3">
           {projectCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-full px-5 py-2 text-sm font-medium transition-all ${
                 selectedCategory === cat
-                  ? "bg-primary text-primary-foreground"
-                  : "border border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground"
+                  ? "bg-gradient-to-r from-brand to-brand-2 text-white shadow-[0_0_24px_-8px_var(--brand)]"
+                  : "border border-border text-muted-foreground hover:border-brand/40 hover:text-foreground"
               }`}
             >
               {cat}
