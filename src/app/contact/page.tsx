@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { MapPin, Send, MessageSquare, Phone } from "lucide-react";
 import { useState, type FormEvent } from "react";
-import { GlassCard } from "@/components/blocks/GlassCard";
+import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { contactMethods } from "@/lib/data/contact";
 
@@ -25,174 +25,151 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen px-6 pb-20 pt-32">
-      <div className="mx-auto max-w-6xl">
+    <div className="px-6 pb-24 pt-16 sm:pt-24">
+      <div className="mx-auto max-w-5xl">
         <SectionHeading
           icon={MessageSquare}
           title="Get In Touch"
           subtitle="Have a project in mind or want to collaborate? Let's build something amazing together."
-          iconAnimation="pulse"
         />
 
-        <div className="grid gap-12 lg:grid-cols-2">
-          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-            <GlassCard className="p-8">
-              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold text-gray-800 dark:text-gray-100">
-                <Send className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+        <div className="grid gap-10 lg:grid-cols-2">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
+            <Card className="p-8">
+              <h2 className="mb-6 flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
+                <Send className="h-5 w-5 text-muted-foreground" />
                 Send a Message
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300">Your Name</label>
-                  <motion.input
-                    whileFocus={{ scale: 1.02 }}
+                  <label className="mb-2 block text-sm font-medium text-foreground">Your Name</label>
+                  <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
-                    className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition-colors focus:border-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                    className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-colors focus:border-foreground/40"
                     placeholder="Your full name"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300">Email Address</label>
-                  <motion.input
-                    whileFocus={{ scale: 1.02 }}
+                  <label className="mb-2 block text-sm font-medium text-foreground">Email Address</label>
+                  <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
-                    className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition-colors focus:border-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                    className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-colors focus:border-foreground/40"
                     placeholder="you@example.com"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300">Subject</label>
-                  <motion.input
-                    whileFocus={{ scale: 1.02 }}
+                  <label className="mb-2 block text-sm font-medium text-foreground">Subject</label>
+                  <input
                     type="text"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     required
-                    className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition-colors focus:border-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                    className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-colors focus:border-foreground/40"
                     placeholder="Project inquiry"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-300">Message</label>
-                  <motion.textarea
-                    whileFocus={{ scale: 1.02 }}
+                  <label className="mb-2 block text-sm font-medium text-foreground">Message</label>
+                  <textarea
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
                     rows={5}
-                    className="w-full resize-none rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition-colors focus:border-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                    className="w-full resize-none rounded-lg border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-colors focus:border-foreground/40"
                     placeholder="Tell me about your project or collaboration idea..."
                   />
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <button
                   type="submit"
                   disabled={isSubmitting || submitted}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 py-4 font-semibold text-white shadow-xl disabled:opacity-50"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                        className="h-5 w-5 rounded-full border-2 border-white border-t-transparent"
-                      />
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
                       Sending...
                     </>
                   ) : submitted ? (
-                    <>
-                      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="flex h-5 w-5 items-center justify-center rounded-full bg-white">
-                        ✓
-                      </motion.div>
-                      Sent Successfully!
-                    </>
+                    "Sent Successfully!"
                   ) : (
                     <>
-                      <Send className="h-5 w-5" />
+                      <Send className="h-4 w-4" />
                       Send Message
                     </>
                   )}
-                </motion.button>
+                </button>
               </form>
-            </GlassCard>
+            </Card>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="space-y-8"
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="space-y-6"
           >
-            <GlassCard className="p-8">
-              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold text-gray-800 dark:text-gray-100">
-                <Phone className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+            <Card className="p-8">
+              <h2 className="mb-6 flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
+                <Phone className="h-5 w-5 text-muted-foreground" />
                 Contact Information
               </h2>
 
-              <div className="space-y-4">
-                {contactMethods.map((method, index) => (
-                  <motion.a
+              <div className="space-y-3">
+                {contactMethods.map((method) => (
+                  <a
                     key={method.title}
                     href={method.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.05, x: 10 }}
-                    className="group flex items-center gap-4 rounded-2xl border-2 border-gray-200 p-4 transition-all hover:border-indigo-300 dark:border-gray-700 dark:hover:border-indigo-500/50"
+                    className="group flex items-center gap-4 rounded-lg border border-border p-4 transition-colors hover:border-foreground/30"
                   >
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${method.color} shadow-lg`}>
-                      <method.icon className="h-6 w-6 text-white" />
-                    </div>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border text-foreground">
+                      <method.icon className="h-5 w-5" />
+                    </span>
                     <div>
-                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400">{method.title}</div>
-                      <div className="font-semibold text-gray-800 transition-colors group-hover:text-indigo-600 dark:text-gray-100 dark:group-hover:text-pink-400">
-                        {method.value}
-                      </div>
+                      <div className="text-sm text-muted-foreground">{method.title}</div>
+                      <div className="font-medium text-foreground transition-colors group-hover:text-brand">{method.value}</div>
                     </div>
-                  </motion.a>
+                  </a>
                 ))}
               </div>
-            </GlassCard>
+            </Card>
 
-            <GlassCard className="bg-gradient-to-br from-indigo-500 to-purple-600 p-8 text-white dark:border-transparent">
+            <Card className="p-8">
               <div className="mb-4 flex items-center gap-3">
-                <MapPin className="h-6 w-6" />
-                <h3 className="text-xl font-bold">Location</h3>
+                <MapPin className="h-5 w-5 text-muted-foreground" />
+                <h3 className="font-serif text-lg font-semibold text-foreground">Location</h3>
               </div>
-              <p className="mb-2 text-lg opacity-90">Lahore, Pakistan</p>
-              <p className="text-sm opacity-75">Available for remote work worldwide</p>
+              <p className="mb-1 text-foreground">Lahore, Pakistan</p>
+              <p className="text-sm text-muted-foreground">Available for remote work worldwide</p>
 
-              <div className="mt-6 border-t border-white/20 pt-6">
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-                  <span>Available for new projects</span>
+              <div className="mt-5 border-t border-border pt-5">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+                  Available for new projects
                 </div>
               </div>
-            </GlassCard>
+            </Card>
 
-            <GlassCard className="flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 to-rose-500">
-                <MessageSquare className="h-6 w-6 text-white" />
-              </div>
+            <Card className="flex items-start gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border text-foreground">
+                <MessageSquare className="h-5 w-5" />
+              </span>
               <div>
-                <h3 className="mb-2 font-bold text-gray-800 dark:text-gray-100">Quick Response Time</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <h3 className="mb-2 font-semibold text-foreground">Quick Response Time</h3>
+                <p className="text-sm text-muted-foreground">
                   I typically respond to emails within 24 hours. For urgent matters, feel free to reach out on LinkedIn.
                 </p>
               </div>
-            </GlassCard>
+            </Card>
           </motion.div>
         </div>
       </div>

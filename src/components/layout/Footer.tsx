@@ -16,23 +16,17 @@ export function Footer() {
   const socials = contactMethods.filter((method) => method.title === "GitHub" || method.title === "LinkedIn");
 
   return (
-    <footer className="relative z-10 mt-20 border-t border-gray-200 bg-white/60 backdrop-blur-xl dark:border-gray-800 dark:bg-gray-950/60">
-      <div className="mx-auto max-w-7xl px-6 py-10">
+    <footer className="mt-24 border-t border-border">
+      <div className="mx-auto max-w-6xl px-6 py-10">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="text-center md:text-left">
-            <span className="bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-lg font-bold text-transparent">
-              Asim Shafique
-            </span>
-            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Python, DRF &amp; Generative AI Engineer</p>
+            <span className="font-serif text-lg font-semibold text-foreground">Asim Shafique</span>
+            <p className="mt-1 text-sm text-muted-foreground">Python, DRF &amp; Generative AI Engineer</p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
             {quickLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className="text-sm text-gray-600 transition-colors hover:text-indigo-600 dark:text-gray-400 dark:hover:text-pink-400"
-              >
+              <Link key={link.path} href={link.path} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
                 {link.label}
               </Link>
             ))}
@@ -48,7 +42,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.title}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-gray-600 transition-colors hover:border-indigo-300 hover:text-indigo-600 dark:border-gray-800 dark:text-gray-400 dark:hover:border-pink-400/40 dark:hover:text-pink-400"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -57,9 +51,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-xs text-gray-500 dark:text-gray-500">
-          © {year} Asim Shafique. All rights reserved.
-        </p>
+        <p className="mt-8 text-center text-xs text-muted-foreground">© {year} Asim Shafique. All rights reserved.</p>
       </div>
     </footer>
   );

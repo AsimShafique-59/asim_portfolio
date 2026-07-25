@@ -3,42 +3,39 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
-import { GlassCard } from "./GlassCard";
-import { cn } from "@/components/ui/utils";
-import type { Project } from "@/lib/data/projects";
+import { Card } from "./Card";
+import { getProjectBySlug } from "@/lib/data/projects";
 
-export function ProjectDetail({ project }: { project: Project }) {
+export function ProjectDetail({ slug }: { slug: string }) {
+  const project = getProjectBySlug(slug);
+  if (!project) return null;
+
   const Icon = project.icon;
 
   return (
-    <div className="min-h-screen px-6 pb-20 pt-32">
-      <div className="mx-auto max-w-4xl">
-        <Link
-          href="/projects"
-          className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 transition-all hover:gap-3 dark:text-pink-400"
-        >
+    <div className="px-6 pb-24 pt-16 sm:pt-20">
+      <div className="mx-auto max-w-3xl">
+        <Link href="/projects" className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
           <ArrowLeft className="h-4 w-4" />
           Back to Projects
         </Link>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <div className={cn("mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br shadow-lg", project.color)}>
-            <Icon className="h-8 w-8 text-white" />
-          </div>
-
-          <span className={cn("mb-4 inline-block rounded-full bg-gradient-to-r px-3 py-1 text-xs font-semibold text-white", project.color)}>
-            {project.category}
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+          <span className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg border border-border text-foreground">
+            <Icon className="h-6 w-6" />
           </span>
 
-          <h1 className="mb-4 text-4xl font-bold text-gray-800 dark:text-gray-100 md:text-5xl">{project.title}</h1>
-          <p className="mb-8 text-lg leading-relaxed text-gray-600 dark:text-gray-400">{project.description}</p>
+          <span className="mb-3 block text-xs font-medium uppercase tracking-wide text-muted-foreground">{project.category}</span>
 
-          <div className="mb-8 flex flex-wrap gap-3">
+          <h1 className="mb-4 font-serif text-4xl font-semibold text-foreground sm:text-5xl">{project.title}</h1>
+          <p className="mb-8 text-lg leading-relaxed text-muted-foreground">{project.description}</p>
+
+          <div className="mb-10 flex flex-wrap gap-3">
             <a
               href={project.demoLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3 font-semibold text-white shadow-lg"
+              className="flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               <ExternalLink className="h-4 w-4" />
               View Live
@@ -47,47 +44,44 @@ export function ProjectDetail({ project }: { project: Project }) {
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-2xl border-2 border-gray-200 bg-white px-6 py-3 font-semibold text-gray-700 shadow-lg dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
+              className="flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               <Github className="h-4 w-4" />
               View Code
             </a>
           </div>
 
-          <GlassCard className="mb-6 p-8">
-            <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-gray-100">Highlights</h2>
+          <Card className="mb-6">
+            <h2 className="mb-4 font-serif text-xl font-semibold text-foreground">Highlights</h2>
             <div className="space-y-3">
               {project.details.map((detail) => (
-                <div key={detail} className="flex gap-3 text-gray-600 dark:text-gray-400">
-                  <span className={cn("mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r", project.color)} />
+                <div key={detail} className="flex gap-3 text-muted-foreground">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40" />
                   <span>{detail}</span>
                 </div>
               ))}
             </div>
-          </GlassCard>
+          </Card>
 
-          <GlassCard className="mb-6 p-8">
-            <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-gray-100">Tech Stack</h2>
+          <Card className="mb-6">
+            <h2 className="mb-4 font-serif text-xl font-semibold text-foreground">Tech Stack</h2>
             <div className="flex flex-wrap gap-2">
               {project.tech.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
-                >
+                <span key={tech} className="rounded-full border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground/80">
                   {tech}
                 </span>
               ))}
             </div>
-          </GlassCard>
+          </Card>
 
-          <GlassCard className="grid grid-cols-3 gap-4 p-8 text-center">
+          <Card className="grid grid-cols-3 gap-4 text-center">
             {Object.entries(project.metrics).map(([key, value]) => (
               <div key={key}>
-                <div className="text-xs uppercase text-gray-500 dark:text-gray-500">{key}</div>
-                <div className="text-lg font-bold text-gray-800 dark:text-gray-100">{value}</div>
+                <div className="text-[11px] uppercase tracking-wide text-muted-foreground">{key}</div>
+                <div className="mt-1 text-lg font-medium text-foreground">{value}</div>
               </div>
             ))}
-          </GlassCard>
+          </Card>
         </motion.div>
       </div>
     </div>

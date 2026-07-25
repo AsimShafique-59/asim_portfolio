@@ -23,50 +23,42 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "bg-white/80 shadow-lg backdrop-blur-xl dark:bg-gray-950/80"
-          : "bg-transparent"
+    <nav
+      className={`sticky top-0 z-50 w-full border-b transition-colors duration-200 ${
+        scrolled ? "border-border bg-background/90 backdrop-blur-sm" : "border-transparent bg-background/0"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 py-4">
+      <div className="mx-auto max-w-6xl px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="group flex items-center gap-2">
-            <motion.div whileHover={{ scale: 1.08 }} transition={{ duration: 0.2 }} className="h-10 w-10 overflow-hidden rounded-xl shadow-lg">
+          <Link href="/" className="flex items-center gap-2.5">
+            <span className="h-8 w-8 overflow-hidden rounded-md border border-border">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo.svg" alt="Asim logo" className="h-full w-full object-cover" />
-            </motion.div>
-            <span className="bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-xl font-bold text-transparent">
-              Asim Shafique
             </span>
+            <span className="font-serif text-lg font-semibold text-foreground">Asim Shafique</span>
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">
             {navItems.map((item) => (
-              <Link key={item.path} href={item.path} className="relative group">
+              <Link key={item.path} href={item.path} className="group relative py-1 text-sm">
                 <span
-                  className={`transition-colors ${
+                  className={
                     pathname === item.path
-                      ? "font-semibold text-indigo-600 dark:text-pink-400"
-                      : "text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-pink-400"
-                  }`}
+                      ? "font-medium text-foreground"
+                      : "text-muted-foreground transition-colors group-hover:text-foreground"
+                  }
                 >
                   {item.label}
                 </span>
                 {pathname === item.path && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-600 to-pink-600"
-                  />
+                  <motion.span layoutId="navbar-indicator" className="absolute -bottom-1 left-0 right-0 h-px bg-foreground" />
                 )}
               </Link>
             ))}
@@ -75,8 +67,12 @@ export function Header() {
 
           <div className="flex items-center gap-3 md:hidden">
             <ThemeToggle />
-            <button onClick={() => setMenuOpen(!menuOpen)} className="text-gray-700 dark:text-gray-200" aria-label="Toggle menu">
-              {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-foreground"
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
           </div>
         </div>
@@ -87,26 +83,28 @@ export function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="mt-4 rounded-2xl bg-white/90 p-4 shadow-xl backdrop-blur-lg dark:bg-gray-900/90 md:hidden"
+              className="overflow-hidden md:hidden"
             >
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  onClick={() => setMenuOpen(false)}
-                  className={`block rounded-lg px-4 py-3 transition-colors ${
-                    pathname === item.path
-                      ? "bg-gradient-to-r from-indigo-600 to-pink-600 text-white"
-                      : "text-gray-700 hover:bg-indigo-50 dark:text-gray-200 dark:hover:bg-gray-800"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              <div className="mt-4 flex flex-col gap-1 border-t border-border pt-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    href={item.path}
+                    onClick={() => setMenuOpen(false)}
+                    className={`rounded-md px-3 py-2.5 text-sm transition-colors ${
+                      pathname === item.path
+                        ? "bg-secondary font-medium text-foreground"
+                        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

@@ -6,65 +6,63 @@ import { Home, Search, AlertCircle } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-screen items-center justify-center px-6 pb-20 pt-32">
-      <div className="mx-auto max-w-2xl text-center">
-        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", duration: 0.6 }} className="mb-8">
-          <motion.div
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-pink-500 to-rose-600 shadow-2xl"
-          >
-            <AlertCircle className="h-16 w-16 text-white" />
-          </motion.div>
-        </motion.div>
+    <div className="flex min-h-[70vh] items-center justify-center px-6 py-24">
+      <div className="mx-auto max-w-xl text-center">
+        <motion.span
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+          className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full border border-border"
+        >
+          <AlertCircle className="h-7 w-7 text-foreground" />
+        </motion.span>
 
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 text-8xl font-bold md:text-9xl">
-          <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">404</span>
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05, duration: 0.4 }}
+          className="mb-4 font-serif text-7xl font-semibold text-foreground md:text-8xl"
+        >
+          404
         </motion.h1>
 
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mb-4 text-3xl font-bold text-gray-800 dark:text-gray-100 md:text-4xl"
+          transition={{ delay: 0.1, duration: 0.4 }}
+          className="mb-4 text-2xl font-semibold text-foreground"
         >
           Page Not Found
         </motion.h2>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mb-8 text-lg text-gray-600 dark:text-gray-400"
+          transition={{ delay: 0.15, duration: 0.4 }}
+          className="mb-8 text-muted-foreground"
         >
           Oops! The page you&apos;re looking for seems to have gone on a coffee break.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.2, duration: 0.4 }}
           className="flex flex-wrap justify-center gap-4"
         >
-          <Link href="/">
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-4 font-semibold text-white shadow-xl"
-            >
-              <Home className="h-5 w-5" />
-              Back to Home
-            </motion.span>
+          <Link
+            href="/"
+            className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            <Home className="h-4 w-4" />
+            Back to Home
           </Link>
-          <Link href="/projects">
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 rounded-2xl border-2 border-indigo-600 bg-white px-8 py-4 font-semibold text-indigo-600 shadow-lg dark:bg-gray-900 dark:text-indigo-400"
-            >
-              <Search className="h-5 w-5" />
-              Explore Projects
-            </motion.span>
+          <Link
+            href="/projects"
+            className="flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+          >
+            <Search className="h-4 w-4" />
+            Explore Projects
           </Link>
         </motion.div>
       </div>

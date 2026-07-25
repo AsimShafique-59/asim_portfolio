@@ -8,49 +8,34 @@ type SectionHeadingProps = {
   icon: LucideIcon;
   title: string;
   subtitle?: string;
-  gradient?: string;
-  iconAnimation?: "spin" | "pulse" | "none";
-  variant?: "hero" | "inline";
+  size?: "lg" | "md";
+  align?: "left" | "center";
   className?: string;
 };
 
-const iconAnimations = {
-  spin: { rotate: [0, 360], scale: [1, 1.1, 1] },
-  pulse: { scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] },
-  none: {},
-};
+export function SectionHeading({ icon: Icon, title, subtitle, size = "lg", align = "center", className }: SectionHeadingProps) {
+  const centered = align === "center";
 
-export function SectionHeading({
-  icon: Icon,
-  title,
-  subtitle,
-  gradient = "from-indigo-600 via-purple-600 to-pink-600",
-  iconAnimation = "none",
-  variant = "hero",
-  className,
-}: SectionHeadingProps) {
-  if (variant === "inline") {
+  if (size === "md") {
     return (
-      <h2 className={cn("flex items-center justify-center gap-3 text-3xl font-bold", className)}>
-        <Icon className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
-        <span className={cn("bg-gradient-to-r bg-clip-text text-transparent", gradient)}>{title}</span>
-      </h2>
+      <div className={cn("mb-8 flex items-center gap-3", centered && "justify-center", className)}>
+        <Icon className="h-4 w-4 shrink-0 text-muted-foreground" />
+        <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">{title}</h2>
+      </div>
     );
   }
 
   return (
-    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className={cn("mb-16 text-center", className)}>
-      <motion.div
-        animate={iconAnimations[iconAnimation]}
-        transition={{ duration: 3, repeat: iconAnimation === "none" ? 0 : Infinity, ease: "easeInOut" }}
-        className={cn("mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br shadow-2xl", gradient)}
-      >
-        <Icon className="h-10 w-10 text-white" />
-      </motion.div>
-      <h1 className="mb-4 text-5xl font-bold md:text-6xl">
-        <span className={cn("bg-gradient-to-r bg-clip-text text-transparent", gradient)}>{title}</span>
-      </h1>
-      {subtitle && <p className="mx-auto max-w-2xl text-xl text-gray-600 dark:text-gray-400">{subtitle}</p>}
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+      className={cn("mb-14", centered ? "mx-auto max-w-2xl text-center" : "max-w-2xl", className)}
+    >
+      <Icon className={cn("mb-4 h-5 w-5 text-muted-foreground", centered && "mx-auto")} />
+      <h2 className="font-serif text-4xl font-semibold text-foreground sm:text-5xl">{title}</h2>
+      {subtitle && <p className="mt-4 text-lg text-muted-foreground">{subtitle}</p>}
     </motion.div>
   );
 }

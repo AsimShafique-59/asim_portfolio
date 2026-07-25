@@ -13,32 +13,25 @@ export default function ProjectsPage() {
   const filteredProjects = selectedCategory === "All" ? projects : projects.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="min-h-screen px-6 pb-20 pt-32">
-      <div className="mx-auto max-w-7xl">
+    <div className="px-6 pb-24 pt-16 sm:pt-24">
+      <div className="mx-auto max-w-6xl">
         <SectionHeading icon={Code2} title="Featured Projects" subtitle="Real-world Python, Django, and AI systems built for production." />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mb-12 flex flex-wrap justify-center gap-3"
-        >
+        <div className="mb-12 flex flex-wrap justify-center gap-3">
           {projectCategories.map((cat) => (
-            <motion.button
+            <button
               key={cat}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(cat)}
-              className={`rounded-2xl px-6 py-3 font-semibold transition-all ${
+              className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
                 selectedCategory === cat
-                  ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-xl"
-                  : "border-2 border-gray-200 bg-white text-gray-700 hover:border-indigo-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-indigo-500/50"
+                  ? "bg-primary text-primary-foreground"
+                  : "border border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground"
               }`}
             >
               {cat}
-            </motion.button>
+            </button>
           ))}
-        </motion.div>
+        </div>
 
         <motion.div layout className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, index) => (

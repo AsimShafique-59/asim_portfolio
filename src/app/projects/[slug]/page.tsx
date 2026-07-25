@@ -24,5 +24,5 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   if (!project) notFound();
 
-  return <ProjectDetail project={project} />;
+  return <ProjectDetail slug={slug} />;
 }
