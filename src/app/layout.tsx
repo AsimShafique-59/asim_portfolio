@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html lang="en" suppressHydrationWarning className={`dark ${inter.variable}`}>
       <body className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
-        <ThemeProvider defaultTheme="dark">
+        <ThemeProvider>
           <Header />
           <PageTransition>{children}</PageTransition>
           <Footer />
