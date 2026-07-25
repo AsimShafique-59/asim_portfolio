@@ -72,7 +72,7 @@ export default function AboutPage() {
                     </span>
                     <div className="min-w-0">
                       <div className="text-xs text-muted-foreground">{fact.label}</div>
-                      <div className="truncate text-sm font-medium text-foreground">{fact.value}</div>
+                      <div className="text-sm font-medium leading-snug text-foreground">{fact.value}</div>
                     </div>
                   </div>
                 ))}
