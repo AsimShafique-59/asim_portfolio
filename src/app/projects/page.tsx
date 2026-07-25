@@ -20,7 +20,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <div className="grid-bg -mx-6 mb-4 rounded-3xl px-6 py-12">
           <SectionHeading icon={Code2} title="Featured Projects" subtitle="Real-world Python, Django, and AI systems built for production." className="mb-0" />
         </div>

@@ -6,7 +6,7 @@ import { ArrowRight, Cpu, Code2, Server, Bot, Cloud, Network, Briefcase, Send } 
 import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ProjectCard } from "@/components/blocks/ProjectCard";
-import { Hero3D } from "@/components/blocks/Hero3D";
+import { HeroPhoto } from "@/components/blocks/HeroPhoto";
 import { featuredProjects } from "@/lib/data/projects";
 import { topSkills } from "@/lib/data/skills";
 import { experience } from "@/lib/data/experience";
@@ -45,10 +45,11 @@ const latestRole = experience[0];
 export default function Home() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         {/* Hero Section */}
-        <div className="grid-bg relative mb-28 -mx-6 grid items-center gap-12 rounded-3xl px-6 py-16 lg:grid-cols-2">
-          <div>
+        <div className="relative mb-28 -mx-6 min-h-[560px] overflow-hidden rounded-3xl">
+          <HeroPhoto />
+          <div className="relative flex min-h-[560px] flex-col justify-center px-6 py-16 sm:px-10 lg:max-w-2xl">
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -108,15 +109,6 @@ export default function Home() {
               Currently building at {latestRole.company} · Lahore, Pakistan
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="hidden lg:block"
-          >
-            <Hero3D />
-          </motion.div>
         </div>
 
         {/* Quick Stats */}

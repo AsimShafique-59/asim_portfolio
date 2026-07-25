@@ -13,16 +13,10 @@ const overviewStats = [
   { icon: GitBranch, label: "Years Experience", value: "2+" },
 ];
 
-const accents = [
-  { icon: "text-brand", chip: "from-brand/15 to-brand-2/10", bar: "from-brand to-brand-2", top: "bg-brand" },
-  { icon: "text-brand-2", chip: "from-brand-2/15 to-glow-3/10", bar: "from-brand-2 to-glow-3", top: "bg-brand-2" },
-  { icon: "text-glow-3", chip: "from-glow-3/15 to-glow-1/10", bar: "from-glow-3 to-glow-1", top: "bg-glow-3" },
-];
-
 export default function SkillsPage() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <div className="grid-bg -mx-6 mb-4 rounded-3xl px-6 py-12">
           <SectionHeading
             icon={Cpu}
@@ -36,47 +30,34 @@ export default function SkillsPage() {
           {overviewStats.map((stat) => (
             <div key={stat.label} className="bg-card p-6 text-center">
               <stat.icon className="mx-auto mb-3 h-5 w-5 text-brand" />
-              <div className="bg-gradient-to-r from-brand to-brand-2 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent">
-                {stat.value}
-              </div>
+              <div className="text-3xl font-extrabold tracking-tight text-foreground">{stat.value}</div>
               <div className="mt-1 text-xs text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {skillCategories.map((category, categoryIndex) => {
-            const accent = accents[categoryIndex % accents.length];
-            return (
-              <Card
-                key={category.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: categoryIndex * 0.06, duration: 0.4 }}
-                className="relative overflow-hidden pt-7"
-              >
-                <span className={`absolute inset-x-0 top-0 h-1 ${accent.top}`} />
-                <div className="mb-6 flex items-center gap-3">
-                  <span className={`flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-gradient-to-br ${accent.chip} ${accent.icon}`}>
-                    <category.icon className="h-6 w-6" />
-                  </span>
-                  <h3 className="text-lg font-extrabold tracking-tight text-foreground">{category.title}</h3>
-                </div>
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <SkillBar
-                      key={skill.name}
-                      skill={skill}
-                      delay={categoryIndex * 0.05 + skillIndex * 0.03}
-                      barClass={accent.bar}
-                      textClass={accent.icon}
-                    />
-                  ))}
-                </div>
-              </Card>
-            );
-          })}
+          {skillCategories.map((category, categoryIndex) => (
+            <Card
+              key={category.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: categoryIndex * 0.06, duration: 0.4 }}
+            >
+              <div className="mb-6 flex items-center gap-3">
+                <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
+                  <category.icon className="h-5 w-5" />
+                </span>
+                <h3 className="text-lg font-extrabold tracking-tight text-foreground">{category.title}</h3>
+              </div>
+              <div className="space-y-4">
+                {category.skills.map((skill, skillIndex) => (
+                  <SkillBar key={skill.name} skill={skill} delay={categoryIndex * 0.05 + skillIndex * 0.03} />
+                ))}
+              </div>
+            </Card>
+          ))}
         </div>
       </div>
     </div>

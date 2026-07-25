@@ -26,7 +26,7 @@ export default function ContactPage() {
 
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <div className="grid-bg -mx-6 mb-6 rounded-3xl px-6 py-12 text-center">
           <SectionHeading
             icon={MessageSquare}

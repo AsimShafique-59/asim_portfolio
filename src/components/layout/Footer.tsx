@@ -17,7 +17,7 @@ export function Footer() {
 
   return (
     <footer className="mt-24 border-t border-border">
-      <div className="mx-auto max-w-6xl px-6 py-10">
+      <div className="mx-auto max-w-7xl px-6 py-10">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="text-center md:text-left">
             <span className="text-lg font-extrabold tracking-tight text-foreground">Asim Shafique</span>

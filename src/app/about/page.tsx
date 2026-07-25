@@ -30,7 +30,7 @@ const quickFacts = [
 export default function AboutPage() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <div className="grid-bg -mx-6 mb-16 grid items-center gap-10 rounded-3xl px-6 py-16 lg:grid-cols-5">
           <motion.div
             initial={{ opacity: 0, y: 16 }}

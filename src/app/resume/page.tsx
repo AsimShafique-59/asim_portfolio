@@ -12,7 +12,7 @@ const skills = ["Python", "Django", "DRF", "FastAPI", "LangChain", "LangGraph", 
 export default function ResumePage() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-10 text-center">
           <h1 className="mb-3 text-5xl font-extrabold tracking-tight text-foreground md:text-6xl">Resume</h1>
           <p className="text-lg text-muted-foreground">Asim Shafique — Python, DRF &amp; Generative AI Engineer</p>
