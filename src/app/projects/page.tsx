@@ -13,7 +13,7 @@ export default function ProjectsPage() {
   const filteredProjects = selectedCategory === "All" ? projects : projects.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="px-6 pb-24 pt-16 sm:pt-24">
+    <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-6xl">
         <SectionHeading icon={Code2} title="Featured Projects" subtitle="Real-world Python, Django, and AI systems built for production." />
 

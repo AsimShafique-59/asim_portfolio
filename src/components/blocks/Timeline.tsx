@@ -22,7 +22,7 @@ export function Timeline({ items }: { items: ExperienceEntry[] }) {
             <span className="mb-2 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
               {item.year}
             </span>
-            <h3 className="font-serif text-lg font-semibold text-foreground">{item.title}</h3>
+            <h3 className="text-lg font-extrabold tracking-tight text-foreground">{item.title}</h3>
             <p className="mb-1 text-sm font-medium text-brand">{item.company}</p>
             <p className="text-sm text-muted-foreground">{item.description}</p>
           </div>

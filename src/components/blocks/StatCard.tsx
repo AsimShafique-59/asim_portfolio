@@ -20,7 +20,7 @@ export function StatCard({ icon: Icon, value, label, delay = 0 }: StatCardProps)
       className="p-8 text-center"
     >
       {Icon && <Icon className="mx-auto mb-4 h-5 w-5 text-muted-foreground" />}
-      <div className="font-serif text-4xl font-semibold text-foreground">{value}</div>
+      <div className="text-4xl font-extrabold tracking-tight text-foreground">{value}</div>
       <div className="mt-2 text-sm text-muted-foreground">{label}</div>
     </Card>
   );

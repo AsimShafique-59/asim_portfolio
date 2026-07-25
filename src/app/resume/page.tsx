@@ -11,16 +11,16 @@ const skills = ["Python", "Django", "DRF", "FastAPI", "LangChain", "LangGraph", 
 
 export default function ResumePage() {
   return (
-    <div className="px-6 pb-24 pt-16 sm:pt-24">
+    <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-4xl">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-10 text-center">
-          <h1 className="mb-3 font-serif text-5xl font-semibold text-foreground md:text-6xl">Resume</h1>
+          <h1 className="mb-3 text-5xl font-extrabold tracking-tight text-foreground md:text-6xl">Resume</h1>
           <p className="text-lg text-muted-foreground">Asim Shafique — Python, DRF &amp; Generative AI Engineer</p>
         </motion.div>
 
         <div className="grid gap-6">
           <Card initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05, duration: 0.4 }} className="p-8">
-            <h2 className="mb-5 flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
+            <h2 className="mb-5 flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground">
               <Briefcase className="h-5 w-5 text-muted-foreground" />
               Experience
             </h2>
@@ -39,7 +39,7 @@ export default function ResumePage() {
           </Card>
 
           <Card initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.4 }} className="p-8">
-            <h2 className="mb-5 flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
+            <h2 className="mb-5 flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground">
               <Code2 className="h-5 w-5 text-muted-foreground" />
               Skills
             </h2>
@@ -54,7 +54,7 @@ export default function ResumePage() {
 
           <div className="grid gap-6 md:grid-cols-2">
             <Card initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.4 }} className="p-8">
-              <h2 className="mb-4 flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
+              <h2 className="mb-4 flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground">
                 <GraduationCap className="h-5 w-5 text-muted-foreground" />
                 Education
               </h2>
@@ -63,7 +63,7 @@ export default function ResumePage() {
             </Card>
 
             <Card initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.4 }} className="p-8">
-              <h2 className="mb-4 flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
+              <h2 className="mb-4 flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground">
                 <Award className="h-5 w-5 text-muted-foreground" />
                 Contact
               </h2>

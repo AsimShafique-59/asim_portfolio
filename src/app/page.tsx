@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Cpu, Code2, Server, Bot, Cloud, Network, Briefcase, Send } from "lucide-react";
+import { ArrowRight, Cpu, Code2, Server, Bot, Cloud, Network, Briefcase, Send } from "lucide-react";
 import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ProjectCard } from "@/components/blocks/ProjectCard";
@@ -44,26 +44,16 @@ const latestRole = experience[0];
 
 export default function Home() {
   return (
-    <div className="px-6 pb-24 pt-16 sm:pt-24">
+    <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-6xl">
         {/* Hero Section */}
         <div className="mb-28 grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-brand" />
-              AI-Powered Development
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="mb-4 bg-gradient-to-r from-brand to-brand-2 bg-clip-text font-serif text-6xl font-semibold text-transparent md:text-7xl"
+              className="mb-4 bg-gradient-to-r from-brand to-brand-2 bg-clip-text text-6xl font-extrabold tracking-tight text-transparent md:text-7xl"
             >
               Asim Shafique
             </motion.h1>
@@ -134,7 +124,7 @@ export default function Home() {
           <Card className="grid grid-cols-1 divide-y divide-border p-0 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {stats.map((stat) => (
               <div key={stat.label} className="p-8 text-center">
-                <div className="font-serif text-4xl font-semibold text-foreground">{stat.number}</div>
+                <div className="text-4xl font-extrabold tracking-tight text-foreground">{stat.number}</div>
                 <div className="mt-2 text-sm text-muted-foreground">{stat.label}</div>
               </div>
             ))}
@@ -208,7 +198,7 @@ export default function Home() {
             <span className="mb-3 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
               {latestRole.year}
             </span>
-            <h3 className="mb-1 font-serif text-2xl font-semibold text-foreground">{latestRole.title}</h3>
+            <h3 className="mb-1 text-2xl font-extrabold tracking-tight text-foreground">{latestRole.title}</h3>
             <p className="mb-3 font-medium text-brand">{latestRole.company}</p>
             <p className="mb-6 text-muted-foreground">{latestRole.description}</p>
             <Link href="/about" className="inline-flex items-center gap-1 text-sm font-medium text-brand transition-all hover:gap-2">
@@ -219,7 +209,7 @@ export default function Home() {
 
         {/* CTA */}
         <Card className="bg-secondary/40 p-10 text-center">
-          <h2 className="mb-3 font-serif text-3xl font-semibold text-foreground">Let&apos;s build something great</h2>
+          <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-foreground">Let&apos;s build something great</h2>
           <p className="mx-auto mb-6 max-w-xl text-muted-foreground">
             Have a project in mind, or need a Python/AI engineer on your team? I&apos;d love to hear about it.
           </p>

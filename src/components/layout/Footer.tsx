@@ -20,7 +20,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-10">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="text-center md:text-left">
-            <span className="font-serif text-lg font-semibold text-foreground">Asim Shafique</span>
+            <span className="text-lg font-extrabold tracking-tight text-foreground">Asim Shafique</span>
             <p className="mt-1 text-sm text-muted-foreground">Python, DRF &amp; Generative AI Engineer</p>
           </div>
 

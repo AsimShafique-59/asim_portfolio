@@ -13,7 +13,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
   const Icon = project.icon;
 
   return (
-    <div className="px-6 pb-24 pt-16 sm:pt-20">
+    <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-3xl">
         <Link href="/projects" className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
           <ArrowLeft className="h-4 w-4" />
@@ -27,7 +27,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
 
           <span className="mb-3 block text-xs font-medium uppercase tracking-wide text-muted-foreground">{project.category}</span>
 
-          <h1 className="mb-4 font-serif text-4xl font-semibold text-foreground sm:text-5xl">{project.title}</h1>
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">{project.title}</h1>
           <p className="mb-8 text-lg leading-relaxed text-muted-foreground">{project.description}</p>
 
           <div className="mb-10 flex flex-wrap gap-3">
@@ -52,7 +52,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
           </div>
 
           <Card className="mb-6">
-            <h2 className="mb-4 font-serif text-xl font-semibold text-foreground">Highlights</h2>
+            <h2 className="mb-4 text-xl font-extrabold tracking-tight text-foreground">Highlights</h2>
             <div className="space-y-3">
               {project.details.map((detail) => (
                 <div key={detail} className="flex gap-3 text-muted-foreground">
@@ -64,7 +64,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
           </Card>
 
           <Card className="mb-6">
-            <h2 className="mb-4 font-serif text-xl font-semibold text-foreground">Tech Stack</h2>
+            <h2 className="mb-4 text-xl font-extrabold tracking-tight text-foreground">Tech Stack</h2>
             <div className="flex flex-wrap gap-2">
               {project.tech.map((tech) => (
                 <span key={tech} className="rounded-full border border-border bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground/80">

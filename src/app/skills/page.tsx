@@ -16,7 +16,7 @@ const overviewStats = [
 
 export default function SkillsPage() {
   return (
-    <div className="px-6 pb-24 pt-16 sm:pt-24">
+    <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-6xl">
         <SectionHeading icon={Cpu} title="Python & AI Stack" subtitle="Technical expertise and tooling used to build backend and AI systems." />
 
@@ -33,7 +33,7 @@ export default function SkillsPage() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-border text-foreground">
                   <category.icon className="h-5 w-5" />
                 </span>
-                <h3 className="font-serif text-lg font-semibold text-foreground">{category.title}</h3>
+                <h3 className="text-lg font-extrabold tracking-tight text-foreground">{category.title}</h3>
               </div>
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (

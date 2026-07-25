@@ -17,7 +17,7 @@ const interests = [
 
 export default function AboutPage() {
   return (
-    <div className="px-6 pb-24 pt-16 sm:pt-24">
+    <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-16 text-center">
           <Tilt intensity={16} className="mx-auto mb-6 h-20 w-20">
@@ -25,7 +25,7 @@ export default function AboutPage() {
               <User className="h-8 w-8 text-brand" />
             </span>
           </Tilt>
-          <h1 className="mb-4 font-serif text-5xl font-semibold text-foreground md:text-6xl">About Me</h1>
+          <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-foreground md:text-6xl">About Me</h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">
             I&apos;m a Python and AI engineer with a strong background in backend development, LLM integration, and product-focused
             engineering. I specialize in scalable Python services, API design, and intelligent AI workflows.
@@ -39,7 +39,7 @@ export default function AboutPage() {
           transition={{ duration: 0.4 }}
           className="mb-16 p-8 md:p-12"
         >
-          <h2 className="mb-6 flex items-center gap-3 font-serif text-2xl font-semibold text-foreground">
+          <h2 className="mb-6 flex items-center gap-3 text-2xl font-extrabold tracking-tight text-foreground">
             <Briefcase className="h-6 w-6 text-muted-foreground" />
             My Journey
           </h2>

@@ -25,7 +25,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="px-6 pb-24 pt-16 sm:pt-24">
+    <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
           icon={MessageSquare}
@@ -36,7 +36,7 @@ export default function ContactPage() {
         <div className="grid gap-10 lg:grid-cols-2">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
             <Card className="p-8">
-              <h2 className="mb-6 flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
+              <h2 className="mb-6 flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground">
                 <Send className="h-5 w-5 text-muted-foreground" />
                 Send a Message
               </h2>
@@ -117,7 +117,7 @@ export default function ContactPage() {
             className="space-y-6"
           >
             <Card className="p-8">
-              <h2 className="mb-6 flex items-center gap-2 font-serif text-xl font-semibold text-foreground">
+              <h2 className="mb-6 flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground">
                 <Phone className="h-5 w-5 text-muted-foreground" />
                 Contact Information
               </h2>
@@ -146,7 +146,7 @@ export default function ContactPage() {
             <Card className="p-8">
               <div className="mb-4 flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-muted-foreground" />
-                <h3 className="font-serif text-lg font-semibold text-foreground">Location</h3>
+                <h3 className="text-lg font-extrabold tracking-tight text-foreground">Location</h3>
               </div>
               <p className="mb-1 text-foreground">Lahore, Pakistan</p>
               <p className="text-sm text-muted-foreground">Available for remote work worldwide</p>

@@ -49,7 +49,7 @@ export function ProjectCard({ project, index = 0, compact = false }: { project: 
 
       <span className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">{project.category}</span>
 
-      <Link href={`/projects/${project.slug}`} className="font-serif text-xl font-semibold text-foreground transition-colors hover:text-brand">
+      <Link href={`/projects/${project.slug}`} className="text-xl font-extrabold tracking-tight text-foreground transition-colors hover:text-brand">
         {project.title}
       </Link>
 
