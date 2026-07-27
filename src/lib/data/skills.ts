@@ -64,13 +64,13 @@ export const skillCategories: SkillCategory[] = [
     color: "from-indigo-500 to-blue-500",
     skills: [
       { name: "Python", level: 98, description: "Core language for backend, automation, and AI services.", icon: SiPython, iconColor: "#3776AB" },
-      { name: "Django", level: 92, description: "Full-stack framework for scalable web and API services.", icon: SiDjango, iconColor: "#0C4B33" },
+      { name: "Django", level: 92, description: "Full-stack framework for scalable web and API services.", icon: SiDjango, iconColor: null },
       {
         name: "Django REST Framework",
         level: 90,
         description: "REST API design and implementation.",
         icon: SiDjango,
-        iconColor: "#0C4B33",
+        iconColor: null,
       },
       {
         name: "FastAPI",
@@ -92,9 +92,9 @@ export const skillCategories: SkillCategory[] = [
         level: 92,
         description: "LLM orchestration, prompt workflows, RAG pipelines.",
         icon: SiLangchain,
-        iconColor: "#1C3C3C",
+        iconColor: "#7FC8FF",
       },
-      { name: "LangGraph", level: 88, description: "AI graph orchestration and model chaining.", icon: SiLanggraph, iconColor: "#1C3C3C" },
+      { name: "LangGraph", level: 88, description: "AI graph orchestration and model chaining.", icon: SiLanggraph, iconColor: "#7FC8FF" },
       { name: "CrewAI", level: 85, description: "Agent-driven AI workflows and automation.", icon: SiCrewai, iconColor: "#FF5A50" },
       {
         name: "OpenAI Agent SDK",
@@ -174,7 +174,7 @@ export const skillCategories: SkillCategory[] = [
         icon: SiPostgresql,
         iconColor: "#4169E1",
       },
-      { name: "DBeaver", level: 81, description: "Cross-database management and querying.", icon: SiDbeaver, iconColor: "#382923" },
+      { name: "DBeaver", level: 81, description: "Cross-database management and querying.", icon: SiDbeaver, iconColor: null },
       { name: "XAMPP", level: 75, description: "Local development server management.", icon: SiXampp, iconColor: "#FB7A24" },
     ],
   },

@@ -7,7 +7,9 @@ import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { Timeline } from "@/components/blocks/Timeline";
 import { Tilt } from "@/components/blocks/Tilt";
-import { experience, certifications } from "@/lib/data/experience";
+import { experience, certifications, certification } from "@/lib/data/experience";
+
+const allCertifications = [...certifications, ...certification];
 import { contactMethods } from "@/lib/data/contact";
 
 const interests = [
@@ -126,7 +128,7 @@ export default function AboutContent() {
         <div className="mb-16">
           <SectionHeading icon={Award} title="Certifications" size="md" className="mb-8" />
           <div className="grid gap-6 md:grid-cols-2">
-            {certifications.map((cert, index) => (
+            {allCertifications.map((cert, index) => (
               <Card
                 key={cert.name}
                 initial={{ opacity: 0, y: 16 }}

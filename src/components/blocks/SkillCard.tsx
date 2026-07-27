@@ -30,8 +30,11 @@ export function SkillCard({
       <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-secondary/60">
         <Icon className={cn("h-7 w-7", !iconColor && "text-foreground")} color={iconColor ?? undefined} />
       </span>
-      <h3 className="mb-4 font-semibold text-foreground">{name}</h3>
-      <div className="relative h-8 w-full overflow-hidden rounded-full bg-secondary">
+      <div className="mb-2 flex w-full items-center justify-between text-xs">
+        <span className="font-semibold text-foreground">{name}</span>
+        <span className="font-medium text-muted-foreground">{level}%</span>
+      </div>
+      <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
@@ -39,9 +42,6 @@ export function SkillCard({
           transition={{ duration: 0.8, delay: delay + 0.15 }}
           className={cn("h-full rounded-full bg-gradient-to-r", color)}
         />
-        <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
-          {level}%
-        </span>
       </div>
     </motion.div>
   );
