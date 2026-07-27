@@ -70,6 +70,7 @@ const rawProjects: Omit<Project, "slug">[] = [
       "Leveraged Advertools for technical SEO auditing, URL analysis, sitemap parsing, and search performance evaluation, covering the same crawlability/indexability fundamentals (robots.txt, sitemaps, canonicalization, status codes) that any production SEO audit needs to check at scale.",
       "Building this platform is also what pushed me to apply the same technical-SEO discipline, clean metadata, structured data, sitemaps, canonical URLs, to my own projects, including this portfolio.",
       "The keyword and traffic-insight pipeline runs on the same Pandas/NumPy data-processing skills I use across my Python backend work, applied here to search performance data instead of application data.",
+      "It sits at the intersection of two things I care about as a Python developer: writing backend code that holds up in production, and making sure the sites built with that code can actually be found on Google.",
     ],
     tech: ["Python", "Pandas", "NumPy", "Google Analytics", "Advertools"],
     icon: Cloud,
