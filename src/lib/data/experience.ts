@@ -43,6 +43,17 @@ export const certifications = [
     name: "Qualifi Level 5 Diploma in Information Technology",
     org: "Qualifi (UK Accredited)",
     year: "2025",
-    details: "IELTS Academic Overall Band Score: 6.0",
+    description: "A comprehensive diploma covering advanced IT concepts, programming, and system design.",  
   },
 ];
+
+export const certification = [
+  {
+    name: "IELTS",
+    org: "British Council",
+    year: "2025",
+    description: "Achieved a score of 6.0 in the IELTS exam, demonstrating proficiency in English language skills.",
+  
+  },
+];
+

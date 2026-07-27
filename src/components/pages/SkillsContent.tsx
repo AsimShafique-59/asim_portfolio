@@ -1,10 +1,9 @@
 "use client";
 
 import { Cpu, Code2, Database, Box, GitBranch } from "lucide-react";
-import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
-import { SkillBar } from "@/components/blocks/SkillBar";
-import { skillCategories } from "@/lib/data/skills";
+import { SkillCard } from "@/components/blocks/SkillCard";
+import { allSkills } from "@/lib/data/skills";
 
 const overviewStats = [
   { icon: Code2, label: "Languages Mastered", value: "3+" },
@@ -37,27 +36,17 @@ export default function SkillsContent() {
           ))}
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {skillCategories.map((category, categoryIndex) => (
-            <Card
-              key={category.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: categoryIndex * 0.06, duration: 0.4 }}
-            >
-              <div className="mb-6 flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
-                  <category.icon className="h-5 w-5" />
-                </span>
-                <h3 className="text-lg font-extrabold tracking-tight text-foreground">{category.title}</h3>
-              </div>
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <SkillBar key={skill.name} skill={skill} delay={categoryIndex * 0.05 + skillIndex * 0.03} />
-                ))}
-              </div>
-            </Card>
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+          {allSkills.map((skill, index) => (
+            <SkillCard
+              key={skill.name}
+              name={skill.name}
+              level={skill.level}
+              icon={skill.icon}
+              iconColor={skill.iconColor}
+              color={skill.categoryColor}
+              delay={(index % 8) * 0.04}
+            />
           ))}
         </div>
       </div>
