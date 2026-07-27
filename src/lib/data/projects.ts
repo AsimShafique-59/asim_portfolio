@@ -1,4 +1,4 @@
-import { Database, Cloud, Zap, Shield, Sparkles, type LucideIcon } from "lucide-react";
+import { Database, Cloud, Zap, Shield, Sparkles, Globe, type LucideIcon } from "lucide-react";
 import { slugify } from "@/lib/slugify";
 
 export type Project = {
@@ -15,9 +15,28 @@ export type Project = {
   demoLink: string;
 };
 
-export const projectCategories = ["All", "Python", "Django", "FastAPI", "AI", "RAG", "SEO"];
+export const projectCategories = ["All", "Python", "Django", "FastAPI", "AI", "RAG", "SEO", "Web"];
 
 const rawProjects: Omit<Project, "slug">[] = [
+  {
+    title: "AB IT and Technical Services — Company Website & Digital Presence",
+    category: "Web",
+    description:
+      "Designed and built the corporate website for AB IT and Technical Services, a UK-registered IT infrastructure and cybersecurity company serving enterprise clients across the UK and Europe.",
+    details: [
+      "As the developer behind this site, I handled the design, development, and deployment end-to-end myself, including custom domain configuration (abitandtechnicalservices.com) via Cloudflare DNS, Netlify hosting, and SSL setup, all without outside contractors.",
+      "Built a multi-page marketing site covering Data Centre Support, Network & Cabling, Cybersecurity/SIEM, Cloud & Data Engineering, Field Engineering, and Managed IT Services, giving each service line its own clear breakdown for enterprise procurement teams evaluating the company.",
+      "Structured the site to be responsive and SEO-optimized from the start, with client testimonials and concrete operational metrics (SLA performance, engineer network size, ticket response times) used as trust signals rather than generic marketing copy.",
+      "Built client-facing pages around the trust signals enterprise buyers actually check before procurement: GDPR compliance, SC-cleared engineers, and EMEA/APAC coverage.",
+      "Owning the full stack, from DNS and hosting to SSL and domain management, meant every technical decision on this project mapped directly to a business outcome rather than being handed off to a separate ops team.",
+    ],
+    tech: ["Netlify", "Cloudflare DNS", "SSL/TLS", "SEO"],
+    icon: Globe,
+    color: "from-slate-500 to-blue-500",
+    metrics: { year: "2024", scope: "Corporate Website", type: "Web/SEO" },
+    githubLink: "https://github.com/AsimShafique-59",
+    demoLink: "https://abitandtechnicalservices.com",
+  },
   {
     title: "Reachgin -- Multi-Industry POS",
     category: "Django",
