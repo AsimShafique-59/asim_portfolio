@@ -144,7 +144,7 @@ export default function AboutContent() {
                   <span className="mt-2 inline-block rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
                     {cert.year}
                   </span>
-                  <p className="mt-3 text-sm text-muted-foreground">{cert.details}</p>
+                  <p className="mt-3 text-sm text-muted-foreground">{cert.description}</p>
                 </div>
               </Card>
             ))}
