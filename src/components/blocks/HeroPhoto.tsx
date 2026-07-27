@@ -10,7 +10,9 @@ export function HeroPhoto() {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
         src="/profile.png"
-        alt="Asim Shafique"
+        alt="Asim Shafique, Python and Django developer in Lahore, Pakistan"
+        fetchPriority="high"
+        decoding="async"
         animate={reduceMotion ? undefined : { scale: [1, 1.06, 1] }}
         transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
         className="h-full w-full object-cover object-[68%_18%]"
