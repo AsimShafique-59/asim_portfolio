@@ -1,11 +1,18 @@
+# Asim Shafique — Portfolio
 
-  # Portfolio website for developer
+Personal portfolio for **Asim Shafique**, a Python & Django developer based in Lahore, Pakistan.
 
-  This is a code bundle for Portfolio website for developer. The original project is available at https://www.figma.com/design/PhcNEDTbN1VlNYva7iuYn2/Portfolio-website-for-developer.
+**Live site:** [asimshafique.netlify.app](https://asimshafique.netlify.app/)
 
-  ## Running the code
+Built with Next.js (App Router), TypeScript, Tailwind CSS, and Framer Motion. Covers backend engineering (Django, DRF, FastAPI), generative AI/LLM work (LangChain, LangGraph, RAG), and cloud/deployment tooling.
 
-  Run `npm i` to install the dependencies.
+- [Projects](https://asimshafique.netlify.app/projects)
+- [Skills](https://asimshafique.netlify.app/skills)
+- [About](https://asimshafique.netlify.app/about)
+- [Contact](https://asimshafique.netlify.app/contact)
 
-  Run `npm run dev` to start the development server.
-  
+## Running the code
+
+Run `npm i` to install the dependencies.
+
+Run `npm run dev` to start the development server.
