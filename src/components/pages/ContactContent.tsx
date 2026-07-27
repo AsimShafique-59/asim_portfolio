@@ -7,21 +7,40 @@ import { Card } from "@/components/blocks/Card";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { contactMethods } from "@/lib/data/contact";
 
+function encodeFormData(data: Record<string, string>) {
+  return Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
+}
+
 export default function ContactContent() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(false);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeFormData({ "form-name": "contact", ...formData }),
+      });
+
+      if (!response.ok) throw new Error(`Form submission failed: ${response.status}`);
+
       setSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSubmitted(false), 3000);
-    }, 1500);
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch {
+      setError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -55,7 +74,19 @@ export default function ContactContent() {
                 Send a Message
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form
+                onSubmit={handleSubmit}
+                name="contact"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                className="space-y-5"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <p className="hidden">
+                  <label>
+                    Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
+                  </label>
+                </p>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-medium text-foreground">Your Name</label>
@@ -121,6 +152,15 @@ export default function ContactContent() {
                     </>
                   )}
                 </button>
+                {error && (
+                  <p className="text-center text-sm text-destructive">
+                    Something went wrong sending that. Please try again, or email me directly at{" "}
+                    <a href="mailto:asimshafique59@gmail.com" className="underline">
+                      asimshafique59@gmail.com
+                    </a>
+                    .
+                  </p>
+                )}
               </form>
             </Card>
           </motion.div>
