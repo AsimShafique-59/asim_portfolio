@@ -29,6 +29,7 @@ const rawProjects: Omit<Project, "slug">[] = [
       "Designed service-layer architecture with separation of concerns, UUID primary keys, soft deletes, and standardized database models, chosen specifically so records could be safely restored after accidental deletion and so IDs never leaked sequential business volume to the outside world.",
       "Developed transaction management including appointment scheduling, billing, invoice generation, and promotion/discount engines, the core revenue-facing logic that every industry vertical on the platform depends on.",
       "Integrated Celery and Redis for background/async workloads (notifications, report generation, scheduled jobs), AWS S3 for media and document storage, Firebase FCM for real-time push notifications to staff devices, and drf-spectacular for auto-generated OpenAPI/Swagger documentation so frontend and mobile teams could integrate without guessing at the API contract.",
+      "Reachgin is the largest Django backend I've built to date, and it's the project that shaped how I think about service-layer separation, RBAC, and async task design on every Django project since.",
     ],
     tech: ["Python", "Django", "DRF", "PostgreSQL", "Celery", "Redis", "AWS S3"],
     icon: Database,
@@ -40,12 +41,15 @@ const rawProjects: Omit<Project, "slug">[] = [
   {
     title: "LinkPOS – Multi-Tenant SaaS POS Platform",
     category: "Django",
-    description: "Architected and implemented a schema-based multi-tenant SaaS backend using Django and django-tenant.",
+    description:
+      "Architected and implemented a schema-based multi-tenant SaaS backend using Django and django-tenant, built to onboard new business customers onto shared infrastructure without compromising data isolation.",
     details: [
       "LinkPOS is a SaaS POS platform sold to multiple independent businesses, so the core requirement was strict data isolation between tenants without the operational overhead of running a separate database per customer. django-tenant's schema-based multi-tenancy was chosen over row-level tenancy (a shared table with a tenant_id column) specifically to get that isolation guarantee at the PostgreSQL schema level while still running everything on a single cluster.",
       "Enabled secure tenant isolation and horizontal scalability within a single PostgreSQL cluster, so onboarding a new business customer means provisioning a new schema rather than standing up new infrastructure.",
       "Developed tenant-aware RESTful APIs with JWT authentication, RBAC, and permission-based POS workflows, ensuring every request resolves to the correct tenant schema automatically and can never leak data across tenant boundaries.",
       "Designed optimized PostgreSQL schemas, managed migrations across all tenant schemas simultaneously, and tuned query performance for high throughput as the number of tenants and transaction volume grew.",
+      "Multi-tenancy trade-offs like this one, schema isolation versus shared-table row isolation, come up constantly in SaaS backend work, and LinkPOS is where I worked through that decision with a real production system rather than a hypothetical.",
+      "The same django-tenant patterns (per-schema migrations, tenant-aware middleware, and permission scoping) carry over directly to any Django SaaS product that needs to serve multiple customers from shared infrastructure.",
     ],
     tech: ["Python", "Django", "DRF", "django-tenant", "PostgreSQL"],
     icon: Database,
@@ -58,12 +62,14 @@ const rawProjects: Omit<Project, "slug">[] = [
     title: "SEO AI – Automated Website SEO Analytics Platform",
     category: "SEO",
     description:
-      "Developed an automated SEO analysis platform for website performance, technical SEO metrics, and content optimization.",
+      "Developed an automated SEO analysis platform for website performance, technical SEO metrics, and content optimization, built to replace manual, spreadsheet-driven SEO audits with a repeatable data pipeline.",
     details: [
       "Manual SEO audits don't scale past a handful of sites, so this platform automates the repetitive parts, crawling, metric extraction, and reporting, so the analysis effort stays roughly constant whether it's auditing one site or dozens.",
       "Processed large-scale SEO datasets using NumPy and Pandas for keyword analysis and traffic insights, turning raw crawl and search-performance data into rankable, comparable metrics across pages and time periods.",
       "Integrated Google Analytics data pipelines to track user behavior and conversion metrics, connecting technical SEO findings back to actual visitor behavior rather than treating crawl data in isolation.",
       "Leveraged Advertools for technical SEO auditing, URL analysis, sitemap parsing, and search performance evaluation, covering the same crawlability/indexability fundamentals (robots.txt, sitemaps, canonicalization, status codes) that any production SEO audit needs to check at scale.",
+      "Building this platform is also what pushed me to apply the same technical-SEO discipline, clean metadata, structured data, sitemaps, canonical URLs, to my own projects, including this portfolio.",
+      "The keyword and traffic-insight pipeline runs on the same Pandas/NumPy data-processing skills I use across my Python backend work, applied here to search performance data instead of application data.",
     ],
     tech: ["Python", "Pandas", "NumPy", "Google Analytics", "Advertools"],
     icon: Cloud,
