@@ -13,8 +13,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return {};
 
   return {
-    title: `${project.title} | Asim Shafique`,
+    title: { absolute: `${project.title} | Asim Shafique` },
     description: project.description,
+    alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: {
+      title: `${project.title} | Asim Shafique`,
+      description: project.description,
+      url: `/projects/${project.slug}`,
+    },
   };
 }
 

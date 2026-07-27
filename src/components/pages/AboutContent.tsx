@@ -45,8 +45,9 @@ export default function AboutContent() {
             </Tilt>
             <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-foreground md:text-6xl">About Me</h1>
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-              I&apos;m a Python and AI engineer with a strong background in backend development, LLM integration, and product-focused
-              engineering. I specialize in scalable Python services, API design, and intelligent AI workflows.
+              I&apos;m a Python and Django developer based in Lahore, Pakistan, with a strong background in backend development, LLM
+              integration, and product-focused engineering. I specialize in scalable Python services, API design, and intelligent
+              AI workflows.
             </p>
             <Link
               href="/contact"
@@ -94,13 +95,24 @@ export default function AboutContent() {
           </h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
-              I started as a Python enthusiast in university and quickly moved into backend engineering. Over time, I built
-              production-ready services that power real business workflows and support modern AI experiences.
+              I started as a Python enthusiast in university and moved into backend engineering as a{" "}
+              <strong className="font-semibold text-foreground">Python Backend Developer at AB IT and Technical Services Limited</strong>{" "}
+              in 2024, where I built scalable backend services, APIs, and deployment pipelines for distributed production
+              environments.
             </p>
             <p>
-              Today my work centers on backend systems with <strong className="font-semibold text-foreground">Django</strong>,{" "}
+              In 2025 I moved into roles that combined backend engineering with applied AI: as a{" "}
+              <strong className="font-semibold text-foreground">Software Engineer at Artificizen</strong>, I designed and delivered
+              chatbot and backend solutions with Django and modern AI tooling, and as a{" "}
+              <strong className="font-semibold text-foreground">Junior AI Engineer at Web Excels</strong>, I worked with LangChain,
+              the OpenAI API, and vector databases to ship AI-powered applications into production workflows.
+            </p>
+            <p>
+              Today, as a <strong className="font-semibold text-foreground">Django Python Developer at Hashed Systems</strong>, my
+              work centers on backend systems with <strong className="font-semibold text-foreground">Django</strong>,{" "}
               <strong className="font-semibold text-foreground">DRF</strong>, and{" "}
-              <strong className="font-semibold text-foreground">FastAPI</strong>, combined with generative AI, RAG, and automation.
+              <strong className="font-semibold text-foreground">FastAPI</strong>, combined with generative AI, agentic RAG, and
+              automation &mdash; all built and shipped from Lahore, Pakistan for clients and teams worldwide.
             </p>
             <p>I enjoy solving hard engineering problems, improving system performance, and delivering clean, maintainable code that can scale.</p>
           </div>

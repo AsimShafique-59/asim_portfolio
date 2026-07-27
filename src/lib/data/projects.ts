@@ -24,10 +24,11 @@ const rawProjects: Omit<Project, "slug">[] = [
     description:
       "Architected a scalable backend system (35+ apps, 150+ models) for multi-industry POS with centralized admin management.",
     details: [
-      "Implemented RESTful APIs with JWT authentication (SimpleJWT), token rotation, blacklisting, and RBAC.",
-      "Designed service-layer architecture with separation of concerns, UUID primary keys, soft deletes, and standardized database models.",
-      "Developed transaction management including appointment scheduling, billing, invoice generation, and promotion/discount engines.",
-      "Integrated Celery, Redis, AWS S3, Firebase FCM push notifications, and drf-spectacular/OpenAPI Swagger documentation.",
+      "Reachgin needed a single POS backend that could serve multiple industries (retail, services, hospitality) from one codebase without each vertical stepping on another's data or business rules, so the system was split into 35+ Django apps with clear domain boundaries and 150+ models covering everything from inventory to loyalty.",
+      "Implemented RESTful APIs with JWT authentication (SimpleJWT), token rotation, blacklisting, and RBAC so that staff, managers, and admins across every tenant industry get exactly the access level their role requires, nothing more.",
+      "Designed service-layer architecture with separation of concerns, UUID primary keys, soft deletes, and standardized database models, chosen specifically so records could be safely restored after accidental deletion and so IDs never leaked sequential business volume to the outside world.",
+      "Developed transaction management including appointment scheduling, billing, invoice generation, and promotion/discount engines, the core revenue-facing logic that every industry vertical on the platform depends on.",
+      "Integrated Celery and Redis for background/async workloads (notifications, report generation, scheduled jobs), AWS S3 for media and document storage, Firebase FCM for real-time push notifications to staff devices, and drf-spectacular for auto-generated OpenAPI/Swagger documentation so frontend and mobile teams could integrate without guessing at the API contract.",
     ],
     tech: ["Python", "Django", "DRF", "PostgreSQL", "Celery", "Redis", "AWS S3"],
     icon: Database,
@@ -41,9 +42,10 @@ const rawProjects: Omit<Project, "slug">[] = [
     category: "Django",
     description: "Architected and implemented a schema-based multi-tenant SaaS backend using Django and django-tenant.",
     details: [
-      "Enabled secure tenant isolation and horizontal scalability within a single PostgreSQL cluster.",
-      "Developed tenant-aware RESTful APIs with JWT authentication, RBAC, and permission-based POS workflows.",
-      "Designed optimized PostgreSQL schemas, managed migrations, and tuned query performance for high throughput.",
+      "LinkPOS is a SaaS POS platform sold to multiple independent businesses, so the core requirement was strict data isolation between tenants without the operational overhead of running a separate database per customer. django-tenant's schema-based multi-tenancy was chosen over row-level tenancy (a shared table with a tenant_id column) specifically to get that isolation guarantee at the PostgreSQL schema level while still running everything on a single cluster.",
+      "Enabled secure tenant isolation and horizontal scalability within a single PostgreSQL cluster, so onboarding a new business customer means provisioning a new schema rather than standing up new infrastructure.",
+      "Developed tenant-aware RESTful APIs with JWT authentication, RBAC, and permission-based POS workflows, ensuring every request resolves to the correct tenant schema automatically and can never leak data across tenant boundaries.",
+      "Designed optimized PostgreSQL schemas, managed migrations across all tenant schemas simultaneously, and tuned query performance for high throughput as the number of tenants and transaction volume grew.",
     ],
     tech: ["Python", "Django", "DRF", "django-tenant", "PostgreSQL"],
     icon: Database,
@@ -58,9 +60,10 @@ const rawProjects: Omit<Project, "slug">[] = [
     description:
       "Developed an automated SEO analysis platform for website performance, technical SEO metrics, and content optimization.",
     details: [
-      "Processed large-scale SEO datasets using NumPy and Pandas for keyword analysis and traffic insights.",
-      "Integrated Google Analytics data pipelines to track user behavior and conversion metrics.",
-      "Leveraged Advertools for technical SEO auditing, URL analysis, sitemap parsing, and search performance evaluation.",
+      "Manual SEO audits don't scale past a handful of sites, so this platform automates the repetitive parts, crawling, metric extraction, and reporting, so the analysis effort stays roughly constant whether it's auditing one site or dozens.",
+      "Processed large-scale SEO datasets using NumPy and Pandas for keyword analysis and traffic insights, turning raw crawl and search-performance data into rankable, comparable metrics across pages and time periods.",
+      "Integrated Google Analytics data pipelines to track user behavior and conversion metrics, connecting technical SEO findings back to actual visitor behavior rather than treating crawl data in isolation.",
+      "Leveraged Advertools for technical SEO auditing, URL analysis, sitemap parsing, and search performance evaluation, covering the same crawlability/indexability fundamentals (robots.txt, sitemaps, canonicalization, status codes) that any production SEO audit needs to check at scale.",
     ],
     tech: ["Python", "Pandas", "NumPy", "Google Analytics", "Advertools"],
     icon: Cloud,
