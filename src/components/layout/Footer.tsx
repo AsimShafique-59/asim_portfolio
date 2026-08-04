@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { ArrowRight, ArrowUpRight, Github, Linkedin, Mail, Phone } from "lucide-react";
 import { AuroraBackground } from "@/components/blocks/AuroraBackground";
 import { contactMethods } from "@/lib/data/contact";
@@ -27,13 +27,9 @@ const specializations = [
 
 const socialIcons = { Email: Mail, Phone: Phone, LinkedIn: Linkedin, GitHub: Github } as const;
 
-const poweredBy = ["Python", "Django", "FastAPI", "React", "Next.js", "PostgreSQL", "Docker", "AWS", "OpenAI", "LangChain", "LangGraph"];
-
 export function Footer() {
-  const reduceMotion = useReducedMotion();
-
   return (
-    <footer className="mt-24 px-4 pb-8 sm:px-6">
+    <footer className="mt-16 px-4 pb-6 sm:px-6">
       <div className="mx-auto max-w-7xl">
         {/* CTA Banner */}
         <motion.div
@@ -41,19 +37,14 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative overflow-hidden rounded-3xl border border-border/60 px-6 py-16 text-center sm:px-10 sm:py-20"
+          className="relative overflow-hidden rounded-3xl border border-border/60 px-6 py-10 text-center sm:px-10 sm:py-12"
         >
           <AuroraBackground />
           <div className="relative">
-            <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl">
-              Have an AI idea?
-              <br />
-              Let&apos;s turn it into reality.
+            <h2 className="text-2xl font-extrabold leading-tight tracking-tight text-foreground sm:text-3xl">
+              Have an AI idea? Let&apos;s turn it into reality.
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              I help teams build production-ready AI systems, intelligent automation, scalable APIs, and modern software platforms.
-            </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground shadow-lg shadow-brand/25 transition-transform hover:scale-105"
@@ -78,7 +69,7 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, staggerChildren: 0.08 }}
-          className="grid gap-10 border-t border-border pt-14 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid gap-8 border-t border-border pt-8 sm:grid-cols-2 lg:grid-cols-4"
         >
           <div>
             <Link href="/" className="flex items-center gap-2.5">
@@ -116,13 +107,13 @@ export function Footer() {
 
           <div>
             <h3 className="mb-4 text-xs font-extrabold uppercase tracking-wide text-muted-foreground">Specializations</h3>
-            <ul className="flex flex-col flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {specializations.map((item) => (
-                <li key={item} className="text-sm text-muted-foreground">
+                <span key={item} className="rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
                   {item}
-                </li>
+                </span>
               ))}
-            </ul>
+            </div>
           </div>
 
           <div>
@@ -152,25 +143,8 @@ export function Footer() {
           </div>
         </motion.nav>
 
-        {/* Powered by */}
-        <div className="mt-14 border-t border-border pt-10">
-          <h3 className="mb-5 text-center text-xs font-extrabold uppercase tracking-wide text-muted-foreground">Powered By</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {poweredBy.map((tech, i) => (
-              <motion.span
-                key={tech}
-                animate={reduceMotion ? undefined : { y: [0, -4, 0] }}
-                transition={{ duration: 3 + (i % 3), repeat: Infinity, ease: "easeInOut", delay: (i % 5) * 0.15 }}
-                className="rounded-full border border-border bg-card/60 px-3.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-brand/40 hover:text-foreground"
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-        </div>
-
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:justify-between">
+        <div className="mt-8 flex flex-col items-center gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} Asim Shafique. All rights reserved.</p>
           <div className="flex items-center gap-5">
             <a href="/sitemap.xml" className="transition-colors hover:text-foreground">
