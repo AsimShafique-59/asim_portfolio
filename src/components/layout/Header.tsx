@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const navItems = [
   { path: "/", label: "Home" },
@@ -20,10 +19,20 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => setScrolled(latest > 24));
 
   return (
     <div className="sticky top-0 z-50 w-full px-4 pt-4 sm:px-6">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border bg-card/70 px-4 py-2.5 shadow-lg shadow-black/5 backdrop-blur-xl">
+      <nav
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border px-4 py-2.5 transition-all duration-300 ${
+          scrolled
+            ? "border-border bg-card/70 shadow-lg shadow-black/5 backdrop-blur-xl"
+            : "border-transparent bg-transparent shadow-none backdrop-blur-none"
+        }`}
+      >
         <Link href="/" className="flex items-center gap-2.5">
           <span className="h-8 w-8 overflow-hidden rounded-full border border-border">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,7 +62,6 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground md:hidden"

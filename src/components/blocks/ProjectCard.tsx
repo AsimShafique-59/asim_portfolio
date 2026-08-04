@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
+import { cn } from "@/components/ui/utils";
 import { Card } from "./Card";
-import { Tilt } from "./Tilt";
 import type { Project } from "@/lib/data/projects";
 
 export function ProjectCard({ project, index = 0, compact = false }: { project: Project; index?: number; compact?: boolean }) {
@@ -16,79 +16,78 @@ export function ProjectCard({ project, index = 0, compact = false }: { project: 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: Math.min(index, 5) * 0.06, duration: 0.4 }}
-      whileHover={{ y: -4 }}
-      className="group flex flex-col"
+      whileHover={{ y: -6 }}
+      className="group flex flex-col overflow-hidden p-0"
     >
-      <div className="mb-4 flex items-start justify-between gap-2">
-        <Tilt intensity={18} className="h-11 w-11 shrink-0">
-          <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
-            <Icon className="h-5 w-5" />
-          </span>
-        </Tilt>
-        <div className="flex shrink-0 gap-3 pt-1">
-          <a
-            href={project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-            aria-label={`${project.title} on GitHub`}
-          >
-            <Github className="h-4 w-4" />
-          </a>
-          <a
-            href={project.demoLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-            aria-label={`${project.title} live demo`}
-          >
-            <ExternalLink className="h-4 w-4" />
-          </a>
+      <Link href={`/projects/${project.slug}`} className="block">
+        <div
+          className={cn(
+            "relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-gradient-to-br transition-transform duration-500 group-hover:scale-105",
+            project.color,
+          )}
+        >
+          <Icon className="h-14 w-14 text-white/90" strokeWidth={1.25} />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>
-      </div>
-
-      <span className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">{project.category}</span>
-
-      <Link href={`/projects/${project.slug}`} className="text-xl font-extrabold tracking-tight text-foreground transition-colors hover:text-brand">
-        {project.title}
       </Link>
 
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+      <div className="flex flex-1 flex-col p-6">
+        <div className="mb-2 flex items-start justify-between gap-2">
+          <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{project.category}</span>
+          <div className="flex shrink-0 gap-3 opacity-0 transition-opacity group-hover:opacity-100">
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label={`${project.title} on GitHub`}
+            >
+              <Github className="h-4 w-4" />
+            </a>
+            <a
+              href={project.demoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label={`${project.title} live demo`}
+            >
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
 
-      {!compact && project.details.length > 0 && (
-        <div className="mt-4 space-y-2 text-sm leading-snug text-muted-foreground">
-          {project.details.map((detail) => (
-            <div key={detail} className="flex gap-2">
-              <span className="shrink-0 font-bold text-brand">▹</span>
-              <span>{detail}</span>
+        <Link href={`/projects/${project.slug}`} className="text-xl font-extrabold tracking-tight text-foreground transition-colors hover:text-brand">
+          {project.title}
+        </Link>
+
+        <p className={cn("mt-3 text-sm leading-relaxed text-muted-foreground", compact ? "line-clamp-2" : "line-clamp-3")}>
+          {project.description}
+        </p>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          {(compact ? project.tech.slice(0, 4) : project.tech).map((tech) => (
+            <span key={tech} className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground/80">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-6 grid grid-cols-3 gap-2 border-t border-border pt-4">
+          {Object.entries(project.metrics).map(([key, value]) => (
+            <div key={key}>
+              <div className="text-[11px] uppercase tracking-wide text-muted-foreground">{key}</div>
+              <div className="text-sm font-medium text-foreground">{value}</div>
             </div>
           ))}
         </div>
-      )}
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        {(compact ? project.tech.slice(0, 4) : project.tech).map((tech) => (
-          <span key={tech} className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground/80">
-            {tech}
-          </span>
-        ))}
+        <Link
+          href={`/projects/${project.slug}`}
+          className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-brand transition-all hover:gap-2"
+        >
+          View case study <ExternalLink className="h-3.5 w-3.5" />
+        </Link>
       </div>
-
-      <div className="mt-6 grid grid-cols-3 gap-2 border-t border-border pt-4">
-        {Object.entries(project.metrics).map(([key, value]) => (
-          <div key={key}>
-            <div className="text-[11px] uppercase tracking-wide text-muted-foreground">{key}</div>
-            <div className="text-sm font-medium text-foreground">{value}</div>
-          </div>
-        ))}
-      </div>
-
-      <Link
-        href={`/projects/${project.slug}`}
-        className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-brand transition-all hover:gap-2"
-      >
-        View details <ExternalLink className="h-3.5 w-3.5" />
-      </Link>
     </Card>
   );
 }

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Code2, Layers, Github } from "lucide-react";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ProjectCard } from "@/components/blocks/ProjectCard";
+import { AuroraBackground } from "@/components/blocks/AuroraBackground";
 import { projects, projectCategories } from "@/lib/data/projects";
 
 const stats = [
@@ -21,13 +22,14 @@ export default function ProjectsContent() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-7xl">
-        <div className="grid-bg -mx-6 mb-4 rounded-3xl px-6 py-12">
+        <div className="relative -mx-6 mb-4 overflow-hidden rounded-3xl border border-border/60 px-6 py-16">
+          <AuroraBackground />
           <SectionHeading
             as="h1"
             icon={Code2}
-            title="Python & Django Projects"
-            subtitle="Real-world Python, Django, and AI systems built for production by a developer in Pakistan."
-            className="mb-0"
+            title="AI & Backend Case Studies"
+            subtitle="Production RAG pipelines, AI agents, and Django/FastAPI systems, shipped end-to-end."
+            className="relative mb-0"
           />
         </div>
 

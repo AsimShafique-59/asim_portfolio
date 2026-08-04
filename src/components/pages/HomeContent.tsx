@@ -2,218 +2,147 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { ArrowRight, Cpu, Code2, Server, Bot, Cloud, Network, Briefcase, Send } from "lucide-react";
-import { Card } from "@/components/blocks/Card";
-import { SectionHeading } from "@/components/blocks/SectionHeading";
-import { ProjectCard } from "@/components/blocks/ProjectCard";
-import { HeroPhoto } from "@/components/blocks/HeroPhoto";
-import { featuredProjects } from "@/lib/data/projects";
-import { topSkills } from "@/lib/data/skills";
-import { experience } from "@/lib/data/experience";
+import { ArrowUpRight, ArrowRight, Bot, Database, Zap } from "lucide-react";
+import { AuroraBackground } from "@/components/blocks/AuroraBackground";
+import { HeroMockup } from "@/components/blocks/HeroMockup";
+import { FloatingChip } from "@/components/blocks/FloatingChip";
+import { ProjectShowcaseCard } from "@/components/blocks/ProjectShowcaseCard";
+import { projects } from "@/lib/data/projects";
+import { contactMethods } from "@/lib/data/contact";
 
-const stats = [
-  { number: "2+", label: "Years Experience" },
-  { number: "12+", label: "Projects Completed" },
-  { number: "36+", label: "Technologies Mastered" },
-];
-
-const focusAreas = [
-  {
-    icon: Server,
-    title: "Backend Engineering",
-    description: "Django, DRF, and FastAPI services built for production reliability and scale.",
-  },
-  {
-    icon: Bot,
-    title: "Generative AI & LLMs",
-    description: "LangChain, LangGraph, and agentic RAG systems for real product workflows.",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud & Automation",
-    description: "Docker, AWS, and CI/CD pipelines that keep deployments fast and reliable.",
-  },
-  {
-    icon: Network,
-    title: "API Architecture",
-    description: "Clean, scalable API design with clear service boundaries and strong data models.",
-  },
-];
-
-const latestRole = experience[0];
+const showcaseProjects = projects.slice(0, 4);
+const emailLink = contactMethods.find((m) => m.title === "Email")?.link ?? "mailto:asimshafique59@gmail.com";
 
 export default function HomeContent() {
   return (
     <div className="px-6 pb-24 pt-10 sm:pt-16">
       <div className="mx-auto max-w-7xl">
         {/* Hero Section */}
-        <div className="relative mb-28 -mx-6 min-h-[560px] overflow-hidden rounded-3xl">
-          <HeroPhoto />
-          <div className="relative flex min-h-[560px] flex-col justify-center px-6 py-16 sm:px-10 lg:max-w-2xl">
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.05 }}
-              className="glow-text mb-4 bg-gradient-to-r from-glow-1 via-glow-2 to-glow-3 bg-clip-text text-6xl font-extrabold tracking-tight text-transparent md:text-7xl"
-            >
-              Asim Shafique
-            </motion.h1>
+        <div className="relative mb-24 -mx-6 overflow-hidden rounded-3xl border border-border/60 px-6 py-16 sm:px-10 sm:py-24">
+          <AuroraBackground />
 
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="mb-6 text-xl font-medium text-foreground/80 sm:text-2xl"
-            >
-              Python &amp; Django Developer in Pakistan
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.15 }}
-              className="mb-8 text-lg leading-relaxed text-muted-foreground"
-            >
-              Python and AI engineer with 2+ years of experience building scalable backend systems, LLM-powered applications, and
-              production-grade automations. Focused on Django/DRF, FastAPI, agentic RAG, and cloud deployment. Based in Lahore,
-              Pakistan, and available for remote work worldwide.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="flex flex-wrap items-center gap-4"
-            >
-              <Link
-                href="/projects"
-                className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 px-6 py-3 text-sm font-medium text-white shadow-[0_0_30px_-8px_var(--brand)] transition-opacity hover:opacity-90"
+          <div className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
+            <div>
+              <motion.span
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-3.5 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-xl"
               >
-                View Projects
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
-              <Link
-                href="/contact"
-                className="rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-              >
-                Get In Touch
-              </Link>
-            </motion.div>
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                Available for AI &amp; backend engineering work
+              </motion.span>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.25 }}
-              className="mt-8 flex items-center gap-2 text-sm text-muted-foreground"
-            >
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-              Currently building at {latestRole.company} · Lahore, Pakistan
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Quick Stats */}
-        <div className="mb-28">
-          <Card className="grid grid-cols-1 divide-y divide-border p-0 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {stats.map((stat) => (
-              <div key={stat.label} className="p-8 text-center">
-                <div className="text-4xl font-extrabold tracking-tight text-foreground">{stat.number}</div>
-                <div className="mt-2 text-sm text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
-          </Card>
-        </div>
-
-        {/* What I Do */}
-        <div className="mb-28">
-          <SectionHeading icon={Cpu} title="What I Do" subtitle="Core areas I focus on when building production systems." />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {focusAreas.map((area, index) => (
-              <Card
-                key={area.title}
+              <motion.h1
                 initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.4 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
+                className="text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
               >
-                <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-gradient-to-br from-brand/10 to-brand-2/10 text-brand">
-                  <area.icon className="h-5 w-5" />
-                </span>
-                <h3 className="mb-2 font-semibold text-foreground">{area.title}</h3>
-                <p className="text-sm text-muted-foreground">{area.description}</p>
-              </Card>
-            ))}
+                Building AI systems that{" "}
+                <span className="bg-gradient-to-r from-brand to-brand-2 bg-clip-text text-transparent">think, automate,</span> and scale.
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+              >
+                I design and ship production-grade AI systems, RAG pipelines, autonomous agents, and LLM-powered automation, on top of
+                reliable Django and FastAPI backends, vector databases, and cloud infrastructure.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.25 }}
+                className="mt-9 flex flex-wrap items-center gap-4"
+              >
+                <Link
+                  href="#impressive-works"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground shadow-lg shadow-brand/25 transition-transform hover:scale-105"
+                >
+                  View Projects
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a
+                  href={emailLink}
+                  className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
+                >
+                  Book a Call
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </motion.div>
+            </div>
+
+            <div className="relative">
+              <FloatingChip icon={Bot} label="Agent running" className="-left-4 -top-6" duration={5} />
+              <FloatingChip icon={Database} label="RAG indexed" className="-right-6 top-1/2 -translate-y-1/2" duration={6} delay={0.5} />
+              <FloatingChip icon={Zap} label="94ms latency" className="-bottom-6 left-10" duration={5.5} delay={1} />
+
+              <motion.div
+                initial={{ opacity: 0, y: 24, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <HeroMockup />
+              </motion.div>
+            </div>
           </div>
         </div>
 
-        {/* Tech Stack */}
-        <div className="mb-28">
-          <SectionHeading icon={Code2} title="Tech Stack" subtitle="A snapshot of the tools I reach for most." />
-          <Card className="p-8">
-            <div className="flex flex-wrap justify-center gap-3">
-              {topSkills.map((skill) => (
-                <span key={skill.name} className="rounded-full border border-border bg-secondary px-4 py-2 font-medium text-secondary-foreground">
-                  {skill.name}
-                </span>
-              ))}
-            </div>
-            <div className="mt-6 flex justify-center">
-              <Link href="/skills" className="inline-flex items-center gap-1 text-sm font-medium text-brand transition-all hover:gap-2">
-                See full skill set <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </Card>
+        {/* Intro */}
+        <div className="mb-24 grid gap-8 sm:grid-cols-2">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-3xl"
+          >
+            Driven by curiosity and a love for backend engineering, I build scalable, production-grade systems. I&apos;m always learning
+            and exploring new ideas in AI.
+          </motion.p>
+
+          <div className="flex flex-col items-start gap-4 sm:items-end sm:text-right">
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+              The fusion of clean backend architecture and generative AI places me at the intersection of reliability and innovation in
+              modern software.
+            </p>
+            <Link href="/about" className="inline-flex items-center gap-1 text-sm font-medium text-foreground transition-all hover:gap-2">
+              More about me
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
 
-        {/* Featured Projects */}
-        <div className="mb-28">
-          <SectionHeading icon={Code2} title="Featured Projects" subtitle="A few of the systems I've shipped recently." />
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} compact />
+        {/* Impressive Works */}
+        <div id="impressive-works" className="mb-16 scroll-mt-24">
+          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">Impressive Works</h2>
+            <p className="max-w-xs text-xs uppercase leading-relaxed tracking-wide text-muted-foreground sm:text-right">
+              Here&apos;s a selection of projects that showcase my passion for backend engineering and AI, reflecting reliability and
+              innovation.
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2">
+            {showcaseProjects.map((project, index) => (
+              <ProjectShowcaseCard key={project.slug} project={project} index={index} />
             ))}
           </div>
+
           <div className="mt-10 flex justify-center">
             <Link
               href="/projects"
-              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 shadow-[0_0_30px_-8px_var(--brand)] px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
-              View All Projects
+              Explore more
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
-
-        {/* Currently */}
-        <div className="mb-28">
-          <SectionHeading icon={Briefcase} title="Currently" />
-          <Card className="mx-auto max-w-3xl p-8 text-center">
-            <span className="mb-3 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
-              {latestRole.year}
-            </span>
-            <h3 className="mb-1 text-2xl font-extrabold tracking-tight text-foreground">{latestRole.title}</h3>
-            <p className="mb-3 font-medium text-brand">{latestRole.company}</p>
-            <p className="mb-6 text-muted-foreground">{latestRole.description}</p>
-            <Link href="/about" className="inline-flex items-center gap-1 text-sm font-medium text-brand transition-all hover:gap-2">
-              See full journey <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </Card>
-        </div>
-
-        {/* CTA */}
-        <Card className="bg-secondary/40 p-10 text-center">
-          <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-foreground">Let&apos;s build something great</h2>
-          <p className="mx-auto mb-6 max-w-xl text-muted-foreground">
-            Have a project in mind, or need a Python/AI engineer on your team? I&apos;d love to hear about it.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-2 shadow-[0_0_30px_-8px_var(--brand)] px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
-          >
-            <Send className="h-4 w-4" />
-            Get In Touch
-          </Link>
-        </Card>
       </div>
     </div>
   );
