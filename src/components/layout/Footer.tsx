@@ -12,7 +12,6 @@ const exploreLinks = [
   { label: "Skills", href: "/skills" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Resume", href: "/resume" },
 ];
 
 const specializations = [
