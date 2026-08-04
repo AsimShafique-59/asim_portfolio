@@ -105,9 +105,9 @@ const rawProjects: Omit<Project, "slug">[] = [
     details: [
       "Implemented JWT authentication, Redis token blacklisting, and RBAC for secure access.",
       "Built venue booking, availability calendars, geo-search, dynamic pricing, invoices, coupons, disputes, and real-time chat.",
-      "Integrated Stripe payments, OAuth2 (Google/Authlib), Firebase notifications, asyncio, uvloop, background workers, SQLAdmin, Sentry, and Alembic.",
+      "Integrated PayMob payments, OAuth2 (Google/Authlib), Firebase notifications, asyncio, uvloop, background workers, SQLAdmin, Sentry, and Alembic.",
     ],
-    tech: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Redis", "AWS S3", "Stripe"],
+    tech: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Redis", "AWS S3", "PayMob"],
     icon: Cloud,
     color: "from-emerald-500 to-teal-500",
     metrics: { year: "2026", scope: "Venue Booking", type: "FastAPI" },

@@ -25,7 +25,7 @@ export default function ContactContent() {
     setError(false);
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encodeFormData({ "form-name": "contact", ...formData }),
@@ -77,8 +77,6 @@ export default function ContactContent() {
               <form
                 onSubmit={handleSubmit}
                 name="contact"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
                 className="space-y-5"
               >
                 <input type="hidden" name="form-name" value="contact" />

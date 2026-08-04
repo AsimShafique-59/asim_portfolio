@@ -11,13 +11,13 @@ export function ProjectCard({ project, index = 0, compact = false }: { project: 
 
   return (
     <Card
-      layout
+      layout="position"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: Math.min(index, 5) * 0.06, duration: 0.4 }}
       whileHover={{ y: -6 }}
-      className="group flex flex-col overflow-hidden p-0"
+      className="group flex h-full flex-col overflow-hidden p-0"
     >
       <Link href={`/projects/${project.slug}`} className="block">
         <div
@@ -56,7 +56,10 @@ export function ProjectCard({ project, index = 0, compact = false }: { project: 
           </div>
         </div>
 
-        <Link href={`/projects/${project.slug}`} className="text-xl font-extrabold tracking-tight text-foreground transition-colors hover:text-brand">
+        <Link
+          href={`/projects/${project.slug}`}
+          className="line-clamp-2 text-xl font-extrabold tracking-tight text-foreground transition-colors hover:text-brand"
+        >
           {project.title}
         </Link>
 
@@ -72,21 +75,23 @@ export function ProjectCard({ project, index = 0, compact = false }: { project: 
           ))}
         </div>
 
-        <div className="mt-6 grid grid-cols-3 gap-2 border-t border-border pt-4">
-          {Object.entries(project.metrics).map(([key, value]) => (
-            <div key={key}>
-              <div className="text-[11px] uppercase tracking-wide text-muted-foreground">{key}</div>
-              <div className="text-sm font-medium text-foreground">{value}</div>
-            </div>
-          ))}
-        </div>
+        <div className="mt-auto">
+          <div className="mt-6 grid grid-cols-3 gap-2 border-t border-border pt-4">
+            {Object.entries(project.metrics).map(([key, value]) => (
+              <div key={key}>
+                <div className="text-[11px] uppercase tracking-wide text-muted-foreground">{key}</div>
+                <div className="text-sm font-medium text-foreground">{value}</div>
+              </div>
+            ))}
+          </div>
 
-        <Link
-          href={`/projects/${project.slug}`}
-          className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-brand transition-all hover:gap-2"
-        >
-          View case study <ExternalLink className="h-3.5 w-3.5" />
-        </Link>
+          <Link
+            href={`/projects/${project.slug}`}
+            className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-brand transition-all hover:gap-2"
+          >
+            View case study <ExternalLink className="h-3.5 w-3.5" />
+          </Link>
+        </div>
       </div>
     </Card>
   );
